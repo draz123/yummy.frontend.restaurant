@@ -1,0 +1,11 @@
+transactions-container {
+  height: $dashboardCardHeight;
+  border-radius: $dashboardSmallPadding;
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  transactions-container {
+    height: initial !important;
+    min-height: $dashboardCardHeight !important;
+  }
+}

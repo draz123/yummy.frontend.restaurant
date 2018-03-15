@@ -1,0 +1,11 @@
+summary-container {
+  height: $dashboardCardHeight;
+  border-radius: $dashboardSmallPadding;
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  pending-container {
+    height: initial !important;
+    min-height: $dashboardCardHeight !important;
+  }
+}

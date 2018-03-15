@@ -1,0 +1,34 @@
+login-form {
+  .login__form {
+    display: grid;
+    width: 100%;
+    .login__field {
+      padding: $welcomePadding;
+      &.input-has-focus .login__input {
+        border-bottom: $borderWidth solid $red;
+      }
+      .login__input {
+        border-bottom: $borderWidth solid $lightGray;
+      }
+    }
+    .login__button {
+      margin: auto;
+      width: $loginFormElementWidth;
+      max-width: $loginFormButtonMaxWidth;
+      background-color: $red;
+      border-radius: $welcomePadding;
+    }
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  .login {
+    width: 55% !important;
+  }
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  .login {
+    width: 45% !important;
+  }
+}

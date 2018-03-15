@@ -1,0 +1,83 @@
+// Header Positioning
+
+ion-content.content {
+  margin-top: $cntHeadHT !important;
+}
+
+.fixed-content, .scroll-content {
+  padding-bottom: 0 !important;
+  margin-bottom: $cntHeadHT !important;
+  margin-top: 0 !important;
+}
+
+.header {
+  box-shadow: 0 0 0 0;
+  &:after {
+    background-image: none;
+  }
+  .toolbar-background {
+    border: 0;
+  }
+}
+
+// Fonts global
+
+.uppercased {
+  text-transform: uppercase;
+}
+
+.bold {
+  font-weight: 500;
+}
+
+.small {
+  font-size: $fontSmall;
+}
+
+.medium {
+  font-size: $fontMedium;
+}
+
+.large {
+  font-size: $fontLarge;
+}
+
+// Icons Positioning
+
+.centered-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Shadows
+
+.shadowed {
+  -webkit-box-shadow: $regShadow;
+  -moz-box-shadow: $regShadow;
+  box-shadow: $regShadow;
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  .small {
+    font-size: $fontSmall * 1.2;
+  }
+  .medium {
+    font-size: $fontMedium * 1.2;
+  }
+  .large {
+    font-size: $fontLarge * 1.2;
+  }
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  .small {
+    font-size: $fontSmall * 1.5;
+  }
+  .medium {
+    font-size: $fontMedium * 1.5;
+  } 
+  .large {
+    font-size: $fontLarge * 1.5;
+  }
+}

@@ -1,0 +1,33 @@
+summary-card {
+  width: 100%;
+  height: 100px;
+  display: block;
+  padding-left: $cntHeadHM / 4;
+  .card__content {
+    height: 100%;
+    display: grid;
+    grid-row-gap: $cntHeadHM / 4;
+    padding: $cntHeadHM / 4 $cntHeadHM / 2;
+    background-color: $white;
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  summary-card {
+    padding-left: $cntHeadHT / 4;
+    .card__content {
+      grid-row-gap: $cntHeadHT / 4;
+      padding: $cntHeadHT / 4 $cntHeadHT / 2;
+    }
+  } 
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  summary-card {
+    padding-left: $cntHeadHD / 4;
+    .card__content {
+      grid-row-gap: $cntHeadHD / 4;
+      padding: $cntHeadHD / 4 $cntHeadHD / 2;
+    }
+  } 
+}

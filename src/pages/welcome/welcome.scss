@@ -1,0 +1,55 @@
+page-welcome {
+  .content {
+    margin-top: 0 !important;
+  }
+  .scroll-content {
+    margin-bottom: 0 !important;
+    display: grid;
+    .splash-bg {
+      position: absolute;
+      background: url('../assets/img/noodles.jpg') no-repeat transparent;
+      background-size: cover;
+      filter: blur(5px);
+      height: 100%;
+      width: 100%;
+      z-index: -1;
+      background-repeat: repeat-x;
+      //animation: animatedBackground 40s linear infinite;
+    }
+    .login {
+      display: grid;
+      grid-template-rows: repeat(4, auto);
+      grid-row-gap: $welcomePadding;
+      width: $dashboardSmallWidth;
+      margin: auto;
+      padding: $welcomePadding*2 $welcomePadding;
+      border-radius: $welcomeRadius;
+      .login__logo {
+        display: flex;
+        .logo__img {
+          width: initial;
+          height: $dashboardSmallImg;
+          margin: auto;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  .login {
+    width: $dashboardMediumWidth !important;
+    .logo__img {
+      height: $dashboardMediumImg !important;
+    }
+  }
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  .login {
+    width: $dashboardLargeWidth !important;
+    .logo__img {
+      height: $dashboardLargeImg !important;
+    }
+  }
+}

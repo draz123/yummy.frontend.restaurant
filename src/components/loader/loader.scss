@@ -1,0 +1,45 @@
+loader {
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  margin: auto;
+  z-index: 3;
+  .loader__rotate {
+    margin: auto;
+    position: absolute;
+    border-width: 2px;
+    border-style: solid;
+    border-radius: 50%;
+  }
+  .rotate__big {
+    border-color: $red;
+    border-top-color: transparent;
+    width: 50px;
+    height: 50px;
+    animation: rotate 4s infinite linear;
+  }
+  .rotate__medium {
+    border-color: $darkGray;
+    border-top-color: transparent;
+    width: 40px;
+    height: 40px;
+    margin: 5px;
+    animation: rotateShift 3s infinite linear;
+  }
+  .rotate__small {
+    border-color: $red;
+    border-top-color: transparent;
+    width: 30px;
+    height: 30px;
+    margin: 10px;
+    animation: rotate 2s infinite linear;
+  }
+  .rotate__tiny {
+    border-color: $darkGray;
+    border-top-color: transparent;
+    width: 20px;
+    height: 20px;
+    margin: 15px;
+    animation: rotateShift 1s infinite linear;
+  }
+}

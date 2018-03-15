@@ -1,0 +1,39 @@
+page-dashboard {
+  .header {
+    .toolbar-background {
+      background-color: $white;
+    }
+    .header__logo {
+      height: $headerHeight;
+    }
+  }
+  .scroll-content {
+    background: $lightGray;
+  }
+  .content {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: space-between;
+    align-content: stretch;
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  .header {
+    .title {
+      width: initial;
+      padding: 0 12px;
+    }
+  }
+  .content {
+    grid-template-columns: 1fr 1fr !important;
+  }
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  .content {
+    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+  }
+}
