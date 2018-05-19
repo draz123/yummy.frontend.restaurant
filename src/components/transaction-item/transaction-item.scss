@@ -1,0 +1,97 @@
+transaction-item {
+  width: 100%;
+  display: grid;
+  grid-template-areas: 
+    'id id id buttonPrimary buttonSecondary'
+    'orderDate receiveTime price buttonPrimary buttonSecondary';
+  grid-template-columns: 1fr 1fr 1fr $cntHeadHM * 1.2 $cntHeadHM * 1.2;
+  grid-template-rows: 1.2fr 0.8fr;
+  box-sizing: border-box;
+  border-left-width: $cntHeadHM / 6;
+  border-left-color: $lightGray;
+  border-left-style: solid;
+  background-color: $white;
+  .item__id, .item__order-date, .item__receive-time, .item__price {
+    padding: $cntHeadHM / 8 $cntHeadHM / 4;
+  }
+  pending-container &.marked {
+    border-left-color: $orange;
+  }
+  
+  pending-container & {
+    .item__receive-time {
+      color: $orange;
+    }
+  }
+  .item__id {
+    font-size: $fontSmallM;
+    grid-area: id;
+    justify-self: flex-start;
+    overflow: hidden;
+  }
+  .item__order-date, .item__receive-time, .item__price {
+    font-size: $fontTinyM;
+    color: $darkerGray;
+  }
+  .item__order-date {
+    grid-area: orderDate;
+  }
+  .item__receive-time {
+    grid-area: receiveTime;
+  }
+  .item__price {
+    grid-area: price;
+  }
+  .button-primary {
+    grid-area: buttonPrimary;
+    height: 100%;
+  }
+  .button-secondary {
+    grid-area: buttonSecondary;
+    height: 100%;
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  transaction-item {
+    border-left-width: $cntHeadHT / 4;
+    .item__id, .item__order-date, .item__receive-time, .item__price {
+      padding: $cntHeadHT / 8 $cntHeadHT / 4;
+    }
+    border-left-width: $cntHeadHT / 8;
+    pending-container & {
+      grid-template-columns: 1fr 1fr 1fr $cntHeadHT $cntHeadHT;
+    }
+    transactions-container & {
+      grid-template-columns: 1fr 1fr 1fr $cntHeadHT;
+    }
+    .item__id {
+      font-size: $fontSmallT;
+    }
+    .item__order-date, .item__receive-time, .item__price {
+      font-size: $fontTinyT;
+    }
+  }
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  transaction-item {
+    border-left-width: $cntHeadHD / 4;
+    .item__id, .item__order-date, .item__receive-time, .item__price {
+      padding: $cntHeadHD / 8 $cntHeadHD / 4;
+    }
+    border-left-width: $cntHeadHD / 8;
+    pending-container & {
+      grid-template-columns: 1fr 1fr 1fr $cntHeadHD / 1.2 $cntHeadHD / 1.2;
+    }
+    transactions-container & {
+      grid-template-columns: 1fr 1fr 1fr $cntHeadHD / 1.2;
+    }
+    .item__id {
+      font-size: $fontSmallD;
+    }
+    .item__order-date, .item__receive-time, .item__price {
+      font-size: $fontTinyD;
+    }
+  }
+}

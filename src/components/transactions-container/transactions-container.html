@@ -1,25 +1,13 @@
 <container-header
   [title]="'Historia'">
-  <button
-    ion-button
-    block
-    outline
-    button-primary>
-    <ion-icon
-      name="md-remove">
-    </ion-icon>
-  </button>
-  <button
-    ion-button
-    block
-    outline
-    button-secondary>
-    <ion-icon
-      name="md-arrow-dropright">
-    </ion-icon>
-  </button>
+  <yummy-button
+    button-primary
+    [icon]="'close'">
+  </yummy-button>
 </container-header>
 <container-subheader
   [title]="'Wczoraj'"
   [date]="'2018-12-12'">
 </container-subheader>
+<transactions-list>
+</transactions-list>

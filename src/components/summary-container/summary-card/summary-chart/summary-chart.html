@@ -1,0 +1,17 @@
+<div
+  class="chart__label">
+  {{ label }}
+</div>
+<div
+  class="chart__value">
+  {{ progress$ | async }}
+  
+</div>
+<div
+  class="chart__progress">
+  <div
+    *ngFor="let div of progressArray$ | async"
+    class="progress__div">
+    
+  </div>
+</div>

@@ -1,5 +1,5 @@
 import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { ErrorHandler, NgModule, CUSTOM_ELEMENTS_SCHEMA, APP_INITIALIZER } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { Camera } from '@ionic-native/camera';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -21,6 +21,18 @@ import { OfferEffects } from '../core/effects/offer.effects';
 import { reducers } from '../core/reducers/reducers';
 import { LoginFormEffects } from '../core/effects/login-form.effects';
 import { LoaderComponent } from '../components/loader/loader';
+import { Initializer } from '../core/providers/initializer/initializer';
+import { TakingsEffects } from '../core/effects/takings.effects';
+import { PendingEffects } from '../core/effects/pending.effects';
+import { PendingProvider } from '../core/providers/pending-provider/pending-provider';
+import { PendingModalComponent } from '../components/pending-modal/pending-modal';
+import { OfferModalComponent } from '../components/offer-modal/offer-modal';
+import { TransactionModalComponent } from '../components/transaction-modal/transaction-modal';
+import { PendingModalProductComponent } from '../components/pending-modal/pending-modal-product/pending-modal-product';
+import { TransactionsProvider } from '../core/providers/transaction/transaction-provider';
+import { TransactionEffects } from '../core/effects/transaction.effects';
+import { OfferFormEffects } from '../core/effects/offer-form.effects';
+import { UserPanelComponent } from '../components/user-panel/user-panel';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -30,10 +42,19 @@ export function provideSettings(storage: Storage) {
   return new Settings(storage, {});
 }
 
+export function initializer(initializeProvider: Initializer) {
+  return () => initializeProvider.initialize();
+}
+
 @NgModule({
   declarations: [
     YummyPlace,
-    LoaderComponent
+    LoaderComponent,
+    PendingModalComponent,
+    OfferModalComponent,
+    TransactionModalComponent,
+    PendingModalProductComponent,
+    UserPanelComponent
   ],
   imports: [
     BrowserModule,
@@ -50,13 +71,22 @@ export function provideSettings(storage: Storage) {
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([
       LoginFormEffects,
-      OfferEffects
+      OfferEffects,
+      TakingsEffects,
+      PendingEffects,
+      TransactionEffects,
+      OfferFormEffects
     ]),
     ReactiveFormsModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
-    YummyPlace
+    YummyPlace,
+    PendingModalComponent,
+    OfferModalComponent,
+    TransactionModalComponent,
+    PendingModalProductComponent,
+    UserPanelComponent
   ],
   providers: [
     Api,
@@ -64,6 +94,9 @@ export function provideSettings(storage: Storage) {
     User,
     OfferProvider,
     LoginProvider,
+    PendingProvider,
+    TransactionsProvider,
+    Initializer,
     Camera,
     SplashScreen,
     StatusBar,
@@ -80,6 +113,14 @@ export function provideSettings(storage: Storage) {
       provide: HTTP_INTERCEPTORS, 
       useClass: HttpInterceptorProvider, 
       multi: true 
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializer,
+      deps: [
+        Initializer
+      ],
+      multi: true
     }
   ],
   schemas: [

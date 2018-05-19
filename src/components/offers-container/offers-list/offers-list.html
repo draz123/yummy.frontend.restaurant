@@ -1,0 +1,12 @@
+<ion-infinite-scroll
+  class="list__scroll"
+  [enabled]="!(isFetching | async)">
+  <offers-item
+    class="list__item"
+    [item]="item"
+    *ngFor="let item of offers | async">
+  </offers-item>
+  <ion-spinner
+    *ngIf="isFetching | async">
+  </ion-spinner>
+</ion-infinite-scroll>

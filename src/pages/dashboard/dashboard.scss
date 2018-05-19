@@ -1,10 +1,13 @@
 page-dashboard {
   .header {
+    .menu__button {
+      color: $darkerGray;
+    }
     .toolbar-background {
       background-color: $white;
     }
     .header__logo {
-      height: $headerHeight;
+      height: $headerHeight * 0.8;
     }
   }
   .scroll-content {
@@ -15,6 +18,7 @@ page-dashboard {
     height: 100%;
     display: grid;
     grid-template-columns: 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
     justify-content: space-between;
     align-content: stretch;
   }
@@ -28,12 +32,31 @@ page-dashboard {
     }
   }
   .content {
-    grid-template-columns: 1fr 1fr !important;
+    grid-template-areas: 
+      'summary summary pending pending'
+      'offer offer offer transactions'
+    ;
+    summary-container {
+      grid-area: summary;
+    }
+    pending-container {
+      grid-area: pending;
+    }
+    offers-container {
+      grid-area: offer;
+    }
+    transactions-container {
+      grid-area: transactions;
+    }
+    grid-template-columns: 1fr 0.2fr 0.2fr 1fr !important;
   }
 }
 
 @media screen and (min-width: $mgDesktopScreenWidth) {
   .content {
-    grid-template-columns: 1fr 1fr 1fr 1fr !important;
+    grid-template-areas: 
+      'summary pending offer transactions' !important;
+    grid-template-columns: 0.8fr 1fr 1.6fr 1fr !important;
+    grid-template-rows: 1fr !important;
   }
 }

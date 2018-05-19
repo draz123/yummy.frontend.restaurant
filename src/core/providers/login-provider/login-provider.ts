@@ -4,9 +4,10 @@ import { Settings } from "../settings/settings";
 import { LoginForm } from "../../models/login-form";
 
 import { Observable } from "rxjs";
-import { fromPromise } from 'rxjs/observable/fromPromise';
 import { LoginUserBody } from "../rest/rest";
 import { HttpErrorResponse } from "@angular/common/http";
+
+declare let sessionStorage;
 
 @Injectable()
 export class LoginProvider {
@@ -22,10 +23,8 @@ export class LoginProvider {
   }
 
   saveAuth({ Authorization }): Observable<void> {
-    return fromPromise(this.settings.setValue(
-      'accessToken',
-      Authorization
-    ));
+    return Observable.of(null)
+      .do(() => sessionStorage.__th = Authorization);
   }
 
   parseForm(loginForm: LoginForm): LoginUserBody {

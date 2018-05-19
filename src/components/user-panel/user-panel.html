@@ -1,4 +1,28 @@
-<!-- Generated template for the UserPanelComponent component -->
-<div>
-  {{text}}
+<div
+  class="user-panel__badge">
+  <div></div>
+  <div></div>
+  <img [src]="'assets/icon/edit.svg'" />
+  <div></div>
+  <img [src]="'assets/icon/user.svg'" />
+  <div></div>
+  <div
+    class="badge__info">
+    <span class="small">profil</span>
+    <span class="medium bold">Admin</span>
+    <span class="small">{{ (user$ | async)?.login }}</span>
+    <span class="small">adres</span>
+  </div>
+</div>
+<div
+  menuClose
+  class="user-panel__tab bold">
+  <img [src]="'assets/icon/iconhome.svg'" />
+  home
+</div>
+<div
+  menuClose
+  class="user-panel__tab bold">
+  <img [src]="'assets/icon/iconoption.svg'" />
+  support
 </div>

@@ -1,0 +1,34 @@
+pending-modal-product {
+  width: 100%;
+  display: grid;
+  grid-template-columns: $cntHeadHM * 2.4 1.6fr 1fr;
+  grid-column-gap: $cntHeadHM / 8;
+  grid-template-rows: 1fr; 
+  color: $darkerGray;
+  overflow: hidden;
+  .product__thumbnail {
+    background: $darkGray;
+  }
+  .count--value, .discount__value, .price__value {
+    color: $orange;
+  }
+  .product__name, .product__discount, .product__price {
+    padding: $cntHeadHM / 4 $cntHeadHM / 8;
+    display: grid;
+    grid-template-rows: 2fr 1fr;
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  pending-modal-product {
+    grid-template-columns: $cntHeadHT * 2.134 1.3fr 1fr;
+    grid-column-gap: $cntHeadHT / 8;
+  }
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  pending-modal-product {
+    grid-template-columns: $cntHeadHD * 1.867 1.3fr 1fr;
+    grid-column-gap: $cntHeadHD / 8;
+  }
+}

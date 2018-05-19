@@ -7,13 +7,13 @@ import * as fromUserActions from "../actions/user.actions";
 import * as fromLoaderActions from "../actions/_loader.actions";
 import * as fromToastActions from "../actions/_toast.actions";
 import * as fromRouteActions from "../actions/_route.actions";
-import { LoginProvider } from "../providers/providers";
+import { LoginProvider, Settings } from "../providers/providers";
 import { LoginFormState } from "../reducers/login-form/login-form.reducer";
 import { Store } from "@ngrx/store";
 import { AppState } from "../app-state";
-import { User } from "../models/user";
 import { _Route } from "../models/_route";
-import { _Loader } from "../models/_loader";
+
+declare let sessionStorage;
 
 @Injectable()
 export class LoginFormEffects {
@@ -48,16 +48,13 @@ export class LoginFormEffects {
     this.store.dispatch(new fromLoaderActions.Hide());
     if (!(res instanceof HttpErrorResponse)) {
       this.updateUser();
-      this.store.dispatch(new fromRouteActions.Push(new _Route("dashboard")));
+      this.store.dispatch(new fromRouteActions.Root(new _Route("dashboard")));
     } else {
       this.store.dispatch(
         new fromToastActions.Show(
           "Wprowadzone hasło jest nieprawidłowe. Proszę, spróbuj jeszcze raz."
         )
       );
-      setTimeout(() => {
-        this.store.dispatch(new fromToastActions.Hide());
-      }, 5000);
     }
   }
 
@@ -65,6 +62,7 @@ export class LoginFormEffects {
     this.store
       .select((state) => state.loginForm)
       .take(1)
+      .do((res: LoginFormState) => sessionStorage.__mail = res.data.login)
       .subscribe((data: LoginFormState) => {
         this.store.dispatch(new fromUserActions.UpdateUser(data));
       });

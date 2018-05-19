@@ -1,0 +1,29 @@
+<div
+  class="card__content">
+  <span
+    class="content__orders">
+    zamówienia
+  </span>
+  <summary-chart
+    [label]="'przyjęte'"
+    [progress$]="orderSummary$.pluck('acceptedOrders')">
+  </summary-chart>
+  <summary-chart
+    [label]="'anulowane'"
+    [progress$]="orderSummary$?.pluck('canceledOrders')">
+  </summary-chart>
+  <summary-chart
+    [label]="'odebrane'"
+    [progress$]="orderSummary$.pluck('completedOrders')">
+  </summary-chart>
+  <summary-chart
+    [label]="'nieodebrane'"
+    [progress$]="orderSummary$.pluck('missedOrders')">
+  </summary-chart>
+  <span
+    class="content__takings">
+    utarg
+  </span>
+  <summary-takings>
+  </summary-takings>
+</div>

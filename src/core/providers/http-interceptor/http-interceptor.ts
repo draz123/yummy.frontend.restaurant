@@ -3,13 +3,28 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpHeaders
+  HttpHeaders,
+  HttpErrorResponse
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
+import { Settings } from "../providers";
+import { fromPromise } from "rxjs/observable/fromPromise";
+import { Store } from "@ngrx/store";
+import { AppState } from "../../app-state";
+import * as fromToastActions from '../../actions/_toast.actions';
+import * as fromRouteActions from '../../actions/_route.actions';
+import { _Route } from "../../models/_route";
+
+declare let sessionStorage;
 
 @Injectable()
 export class HttpInterceptorProvider implements HttpInterceptor {
+  constructor(
+    private settings: Settings,
+    private store: Store<AppState>
+  ) {}
+
   intercept(
     req: HttpRequest<any>,
     next: HttpHandler
@@ -21,17 +36,54 @@ export class HttpInterceptorProvider implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    let authHeaders: HttpHeaders = new HttpHeaders();
+    return this.getHeadersValues().mergeMap(([authToken, login]) => {
+      return next
+        .handle(
+          req.clone(
+            authToken && login && !req.url.includes("login")
+              ? {
+                  setHeaders: {
+                    Authorization: authToken,
+                    Email: login
+                  }
+                }
+              : {}
+          )
+        )
+        .do(
+          () => {},
+          (err: any) => {
+            if (this.checkIfAuthError(err)) this.handleAuthError();
+          }
+        );
+    });
+  }
 
-    authHeaders.append(
-      "Authorizartion",
-      "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ1c2VyMkBnbWFpbC5jb20iLCJleHAiOjE1MTg2MDU1ODV9.opb6j7Z-Lc2N3yirSYbExOASTqlJ27qFPnd7eEEpkOuiXAqWVbhl7iITcFBpgNORZuq2OXE5291eslN5kJV3wA"
-    );
+  checkIfAuthError(err: any): boolean {
+    if (!err.url) {
+      return false;
+    } else if ((err instanceof HttpErrorResponse) && !err.url.includes('login')) {
+      return err.status === 401 || err.status === 403;
+    } else {
+      return false;
+    }
+  }
 
-    return next.handle(
-      req.clone({
-        headers: authHeaders
-      })
+  handleAuthError(): void {
+    this.store.dispatch(new fromToastActions.Show(
+      'Błąd autoryzacji, przekierowanie do strony logowania...'
+    ));
+    setTimeout(() => {
+      this.store.dispatch(
+        new fromRouteActions.Root(new _Route('welcome'))
+      );
+    }, 4000);
+  }
+
+  getHeadersValues(): Observable<any[]> {
+    return Observable.combineLatest(
+      Observable.of(sessionStorage.__th),
+      Observable.of(sessionStorage.__mail)
     );
   }
 }

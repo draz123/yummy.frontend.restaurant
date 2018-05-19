@@ -1,0 +1,29 @@
+pending-list {
+  display: block;
+  width: calc(100% - $cntHeadHM / 4);
+  height: calc(100% - $cntHeadHM / 4);
+  margin-left: $cntHeadHM / 4;
+  margin-bottom: $cntHeadHM / 4;
+  overflow: scroll;
+  .spinner > svg > circle {
+    stroke: $orange;
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  pending-list {
+    width: calc(100% - $cntHeadHT / 4);
+    height: calc(100% - $cntHeadHT / 4);
+    margin-left: $cntHeadHT / 4;
+    margin-bottom: $cntHeadHT / 4;
+  } 
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  pending-list {
+    width: calc(100% - $cntHeadHD / 4);
+    height: calc(100% - $cntHeadHD / 4);
+    margin-left: $cntHeadHD / 4;
+    margin-bottom: $cntHeadHD / 4;
+  } 
+}

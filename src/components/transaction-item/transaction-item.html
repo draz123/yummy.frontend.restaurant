@@ -1,0 +1,31 @@
+<span
+  class="item__id">
+  {{ item?.id }} {{ item?.name }}
+</span>
+<span
+  class="item__order-date">
+  {{ item?.orderTime | date: 'shortTime' }}
+  <br>
+  {{ item?.orderTime | date: 'shortDate' }}
+</span>
+<span
+  class="item__receive-time">
+  {{ item?.receiveTime | date: 'shortTime' }}
+  <br>
+  {{ item?.receiveTime | date: 'shortDate' }}
+  <br>
+</span>
+<span
+  class="item__price">
+  suma: {{ item?.price | currency: 'PLN ' }}
+</span>
+<yummy-button
+  (buttonClick)="markItem(item.id)"
+  class="button-primary"
+  [icon]="(item.isMarked) ? 'accept' : 'select'">
+</yummy-button>
+<yummy-button
+  (buttonClick)="openItem(item.id)"
+  class="button-secondary"
+  [icon]="'go'">
+</yummy-button>

@@ -1,16 +1,48 @@
+// Global Load App Logo
+
+.load__app__logo__container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+// Side Menu Global
+
+.placeholder {
+  height: 130px;
+  width: 100%;
+  display: none;
+  background: $white;
+}
+
+.menu-inner {
+  background: $darkGray !important;
+  .meta {
+    bottom: 0;
+    position: absolute;
+    padding: 2vh;
+  }
+}
+
 // Header Positioning
 
 ion-content.content {
   margin-top: $cntHeadHT !important;
 }
 
-.fixed-content, .scroll-content {
+.fixed-content,
+.scroll-content {
   padding-bottom: 0 !important;
   margin-bottom: $cntHeadHT !important;
   margin-top: 0 !important;
 }
 
 .header {
+  .title {
+    padding: 12px 12px !important;
+  }
   box-shadow: 0 0 0 0;
   &:after {
     background-image: none;
@@ -20,14 +52,40 @@ ion-content.content {
   }
 }
 
+// Modal Mobile
+
+.modal-wrapper {
+  border-radius: 2px;
+  overflow: hidden;
+  -webkit-box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 28px 48px rgba(0, 0, 0, 0.4);
+}
+
 // Fonts global
+
+div, span, h1, h2, h3, h4, h5, h6 {
+  font-family: 'Ubuntu' !important;
+  font-weight: 100;
+}
+
+.darkGray {
+  color: $darkerGray;
+}
+
+.right {
+  text-align: right;
+}
 
 .uppercased {
   text-transform: uppercase;
 }
 
+.italic {
+  font-style: italic;
+}
+
 .bold {
-  font-weight: 500;
+  font-weight: 900;
 }
 
 .small {
@@ -58,6 +116,46 @@ ion-content.content {
   box-shadow: $regShadow;
 }
 
+// Yummy Buttons
+
+.yummy-button {
+  height: 100%;
+  width: $cntHeadHM * 1.2;
+  box-sizing: border-box;
+  margin: 0;
+  border-right: 0;
+  border-top: 0;
+  border-bottom: 0;
+  border-radius: 0;
+  border-left: 3px solid $lightGray;
+  .button-effect {
+    background-color: $darkGray;
+  }
+  &.activated {
+    background-color: $darkGray;
+    * {
+      color: $white;
+    }
+  }
+  * {
+    font-size: $fontIconM;
+    color: $darkGray;
+  }
+}
+
+// Global Loader
+
+ion-loading {
+  .loading-wrapper {
+    circle {
+      stroke: $red !important;
+    }
+  }
+}
+
+
+// Global Classess MQ
+
 @media screen and (min-width: $mgTabletScreenWidth) {
   .small {
     font-size: $fontSmall * 1.2;
@@ -68,6 +166,15 @@ ion-content.content {
   .large {
     font-size: $fontLarge * 1.2;
   }
+  .yummy-button {
+    width: $cntHeadHD / 1.2;
+    * {
+      font-size: $fontIconD;
+    }
+  }
+  .modal-wrapper {
+    margin-top: 0;
+  }
 }
 
 @media screen and (min-width: $mgDesktopScreenWidth) {
@@ -76,8 +183,65 @@ ion-content.content {
   }
   .medium {
     font-size: $fontMedium * 1.5;
-  } 
+  }
   .large {
     font-size: $fontLarge * 1.5;
+  }
+  .yummy-button {
+    width: $cntHeadHD / 1.2;
+    * {
+      font-size: $fontIconD;
+    }
+  }
+}
+
+@media (min-width: $mgToggleMenuScreenWidth) {
+  .placeholder {
+    display: block;
+  }
+  ion-content.content {
+    margin-top: 0 !important;
+  }
+  ion-menu,
+  ion-menu[type="reveal"] {
+    z-index: 80;
+    display: block;
+    right: inherit;
+    contain: initial;
+    .menu-inner {
+      box-shadow: 0 0 0 0 !important;
+    }
+  }
+  button[menutoggle] {
+    display: none;
+  }
+  .fixed-content {
+    bottom: 56px;
+  }
+  .scroll-content {
+    overflow-y: auto;
+    margin-top: 0 !important;
+  }
+  .menu-inner {
+    width: 250px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    transform: translateX(0) !important;
+    > ion-header {
+      position: relative;
+    }
+    > * {
+      position: relative;
+    }
+  }
+  page-dashboard.ion-page {
+    left: 250px;
+    padding-right: 250px;
+    > ion-header {
+      position: relative;
+    }
+    > ion-content {
+      position: relative;
+    }
   }
 }

@@ -1,0 +1,131 @@
+offers-item {
+  width: 100%;
+  height: $cntHeadHM * 1.8;
+  display: grid;
+  grid-template-areas: 
+    'thumb label label count-but button-primary'
+    'thumb details details count-but button-primary'
+    'thumb discount value count-but button-primary'
+  ;
+  grid-template-rows: $cntHeadHM * 1.8 / 2 $cntHeadHM * 1.8 / 4 $cntHeadHM * 1.8 / 4;
+  grid-template-columns: $cntHeadHM * 2.4 0.7fr 1.3fr $cntHeadHM * 1.2 $cntHeadHM * 1.2;
+  box-sizing: border-box;
+  background-color: $white;
+  .item__thumbnail {
+    grid-area: thumb;
+    background: $gray;
+    display: flex;
+  }
+  .details__label, .item__label {
+    color: $darkerGray;
+  }
+  .item__discount, .item__value, .details__value {
+    color: $blue;
+  }
+  .item__details, .item__discount, .item__value, .item__label {
+    padding: 0 $cntHeadHM / 8;
+    overflow: hidden;
+  }
+  .details__label, .item__discount, .item__value {
+    font-size: $fontTinyM;
+  }
+  .details__value, .item__label {
+    font-size: $fontSmallM;
+  }
+  .item__label {
+    grid-area: label;
+    padding: $cntHeadHM / 8 $cntHeadHM / 8 0 $cntHeadHM / 8;
+  }
+  .item__details {
+    grid-area: details;
+    text-align: right;
+  }
+  .item__discount {
+    grid-area: span;
+  }
+  .item__value {
+    grid-area: value;
+    text-align: right;
+  }
+  .item__count-buttons {
+    grid-area: count-but;
+    .count-button {
+      border: 0;
+      border-radius: 0;
+      margin: 0;
+      width: 100%;
+      height: 50%;
+      background-color: $gray;
+      color: $white;
+      .icon {
+        font-size: $fontLargeM;
+      }
+      .button-effect {
+        background-color: $lightGray;
+      }
+      &.activated {
+        background-color: $lightGray;
+        * {
+          color: $white;
+        }
+      }
+    }
+  }
+  .button-primary {
+    grid-area: button-primary;
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  offers-item {
+    height: $cntHeadHT * 1.6;
+    grid-template-rows: $cntHeadHT * 1.6 / 2 $cntHeadHT * 1.6 / 4 $cntHeadHT * 1.6 / 4;
+    grid-template-columns: $cntHeadHT * 2.134 0.7fr 1.3fr $cntHeadHT $cntHeadHT;
+    .item__details, .item__discount, .item__value, .item__label {
+      padding: 0 $cntHeadHT / 8;
+    }
+    .item__label {
+      padding: $cntHeadHT / 8 $cntHeadHT / 8 0 $cntHeadHT / 8;
+    }
+    .details__label, .item__discount, .item__value {
+      font-size: $fontTinyT;
+    }
+    .details__value, .item__label {
+      font-size: $fontSmallT;
+    }
+    .item__count-buttons {
+      .count-button {
+        .icon {
+          font-size: $fontLargeT;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  offers-item {
+    height: $cntHeadHD * 1.3;
+    grid-template-rows: $cntHeadHD * 1.3 / 2 $cntHeadHD * 1.3 / 4 $cntHeadHD * 1.3 / 4;
+    grid-template-columns: $cntHeadHD * 1.867 0.7fr 1.3fr $cntHeadHD / 1.2 $cntHeadHD / 1.2;
+    .item__details, .item__discount, .item__value, .item__label {
+      padding: 0 $cntHeadHD / 8;
+    }
+    .item__label {
+      padding: $cntHeadHD / 8 $cntHeadHD / 8 $cntHeadHD / 8;
+    }
+    .details__label, .item__discount, .item__value {
+      font-size: $fontTinyD;
+    }
+    .details__value, .item__label {
+      font-size: $fontSmallD;
+    }
+    .item__count-buttons {
+      .count-button {
+        .icon {
+          font-size: $fontLargeD;
+        }
+      }
+    }
+  }
+}

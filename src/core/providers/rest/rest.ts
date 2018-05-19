@@ -32,6 +32,34 @@ export class Rest extends Api {
     return this.post(this.parseUrl("login"), body);
   }
 
+  getTakings(): Observable<any> {
+    return this.get(this.parseUrl("balance"));
+  }
+
+  createPending(body: any): Observable<any> {
+    return this.post(this.parseUrl('transaction'), body);
+  }
+
+  postPendings(
+    page: number = 0,
+    size: number = 8
+  ): Observable<any> {
+    return this.post(this.parseUrl("orders/current"), {
+      page: page,
+      size: size
+    });
+  }
+
+  updatePendings(
+    ids: string[],
+    state: 'COMPLETED' | 'CANCELED'
+  ): Observable<any> {
+    return this.post(this.parseUrl("orders/state"), {
+      idList: ids,
+      state: state
+    });
+  }
+
   getOffers(): Observable<any> {
     return this.get(this.parseUrl("offers"));
   }
@@ -43,10 +71,25 @@ export class Rest extends Api {
   }
 
   postOffer(body: OfferBody): Observable<any> {
-    return this.post(this.parseUrl("offer"), body);
+    return this.post(this.parseUrl(`offer`), body);
+  }
+
+  deleteOffer(id: string | number): Observable<any> {
+    return this.get(this.parseUrl(`offer/delete?id=${id}`));
   }
 
   putOffer(body: OfferBody): Observable<any> {
-    return this.put(this.parseUrl("offer"), body);
+    return this.post(this.parseUrl(`offer?id=${body.id}`), body);
   }
+
+  getTransactions(
+    page: number = 0,
+    size: number = 8
+  ): Observable<any> {
+    return this.get(this.parseUrl("orders"), {
+      page: page,
+      size: size
+    });
+  }
+
 }

@@ -1,0 +1,35 @@
+summary-single-taking {
+  display: grid;
+  grid-row-gap: $cntHeadHM / 16;
+  padding: $cntHeadHM / 8;
+  span {
+    text-align: center;
+    text-transform: capitalize;
+  }
+  .single__label, .single__value {
+    font-weight: 500;
+    font-size: $fontSmallM;
+    color: $darkerGray;
+  }
+
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  summary-card {
+    grid-row-gap: $cntHeadHT / 16;
+    padding: $cntHeadHT / 8;
+    .single__label, .single__value {
+      font-size: $fontSmallT;
+    }
+  } 
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  summary-card {
+    grid-row-gap: $cntHeadHD / 16;
+    padding: $cntHeadHD / 8;
+    .single__label, .single__value {
+      font-size: $fontSmallD;
+    }
+  }
+}

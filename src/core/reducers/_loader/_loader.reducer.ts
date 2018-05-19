@@ -15,13 +15,15 @@ export const _loaderReducer = (
 ) => {
   switch (action.type) {
     case fromActions.SHOW:
-      return Object.assign({}, state, { 
+      return { 
+        ...state,
         data: new _Loader(true, action.payload)
-      });
+      };
     case fromActions.HIDE:
-    return Object.assign({}, state, { 
+    return { 
+      ...state,
       data: new _Loader()
-    });
+    };
     default:
       return state;
   }

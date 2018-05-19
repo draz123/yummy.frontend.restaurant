@@ -15,9 +15,12 @@ export const loginFormReducer = (
 ) => {
   switch (action.type) {
     case fromActions.UPDATE_FORM:
-      return Object.assign({}, state, action.payload);
+      return { 
+        ...state, 
+        ...action.payload
+      };
     case fromActions.SUBMIT_FORM_SUCC:
-      return Object.assign({}, initialState);
+      return initialState;
     default:
       return state;
   }

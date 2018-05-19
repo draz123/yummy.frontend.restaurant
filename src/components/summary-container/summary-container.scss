@@ -1,11 +1,11 @@
 summary-container {
-  height: $dashboardCardHeight;
   border-radius: $dashboardSmallPadding;
+  display: grid;
+  grid-row-gap: 10px;
+  align-content: start;
 }
 
 @media screen and (min-width: $mgTabletScreenWidth) {
-  pending-container {
-    height: initial !important;
-    min-height: $dashboardCardHeight !important;
+  summary-container {
   }
 }

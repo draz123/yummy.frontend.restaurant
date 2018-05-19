@@ -1,26 +1,15 @@
 <container-header
   [title]="'Menu'">
-  <button
-    ion-button
-    block
-    outline
-    button-primary>
-    <ion-icon
-      name="md-add">
-    </ion-icon>
-  </button>
-  <button
-    ion-button
-    block
-    outline
-    button-secondary>
-    <ion-icon
-      name="md-arrow-dropright">
-    </ion-icon>
-  </button>
+  <yummy-button
+    (click)="add()"
+    button-primary
+    [icon]="'save'">
+  </yummy-button>
 </container-header>
 <container-subheader
   class="blue-title"
   [title]="'Aktualne menu'"
   [date]="'2018-12-12'">
 </container-subheader>
+<offers-list>
+</offers-list>

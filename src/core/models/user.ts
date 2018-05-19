@@ -8,4 +8,8 @@ export class User extends LoginForm {
   
 }
 
-export interface User extends LoginForm {};
+export interface User extends LoginForm {
+  website: string,
+  description: string,
+  image: string
+};

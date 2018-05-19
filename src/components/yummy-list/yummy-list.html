@@ -1,0 +1,14 @@
+<ion-infinite-scroll
+  [enabled]="!(isFetching | async)">
+  <transaction-item
+    class="list__item"
+    [item]="item"
+    [ngClass]="(item.isMarked) ? 'marked' : ''"
+    *ngFor="let item of items | async">
+  </transaction-item>
+  <ng-content
+    *ngIf="isFetching | async"
+    select="[list-spinner]">
+  </ng-content>
+</ion-infinite-scroll>
+  

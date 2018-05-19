@@ -1,0 +1,38 @@
+yummy-list {
+  ion-infinite-scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: $scrollHeight;
+  }
+  .list__item {
+    margin-bottom: $cntHeadHM / 8;
+  }
+  .spinner {
+    width: 100%;
+    margin: $cntHeadHM / 2;
+    display: flex;
+    align-content: center;
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  yummy-list {
+    .list__item {
+      margin-bottom: $cntHeadHT / 8;
+    }
+    .spinner {
+      margin: $cntHeadHT / 8;
+    }
+  }
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  yummy-list {
+    .list__item {
+      margin-bottom: $cntHeadHD / 8;
+    }
+    .spinner {
+      margin: $cntHeadHD / 8;
+    }
+  }
+}

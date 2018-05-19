@@ -1,0 +1,49 @@
+offers-list {
+  display: block;
+  width: calc(100% - $cntHeadHM / 4);
+  height: calc(100% - $cntHeadHM / 4);
+  margin-left: $cntHeadHM / 4;
+  margin-bottom: $cntHeadHM / 4;
+  overflow: scroll;
+  .list__item {
+    margin-bottom: $cntHeadHM / 8;
+  }
+  .spinner {
+    width: 100%;
+    margin: $cntHeadHM / 2;
+    display: flex;
+    align-content: center;
+  }
+  .spinner > svg > circle {
+    stroke: $blue;
+  }
+  ion-infinite-scroll {
+    overflow-x: hidden;
+    overflow-y: auto;
+    max-height: $scrollHeight;
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  offers-list {
+    width: calc(100% - $cntHeadHT / 4);
+    height: calc(100% - $cntHeadHT / 4);
+    margin-left: $cntHeadHT / 4;
+    margin-bottom: $cntHeadHT / 4;
+    .list__item {
+      margin-bottom: $cntHeadHT / 8;
+    }
+  } 
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  offers-list {
+    width: calc(100% - $cntHeadHD / 4);
+    height: calc(100% - $cntHeadHD / 4);
+    margin-left: $cntHeadHD / 4;
+    margin-bottom: $cntHeadHD / 4;
+    .list__item {
+      margin-bottom: $cntHeadHD / 8;
+    }
+  } 
+}

@@ -23,12 +23,12 @@ login-form {
 
 @media screen and (min-width: $mgTabletScreenWidth) {
   .login {
-    width: 55% !important;
+    width: 300px !important;
   }
 }
 
 @media screen and (min-width: $mgDesktopScreenWidth) {
   .login {
-    width: 45% !important;
+    width: 350px !important;
   }
 }

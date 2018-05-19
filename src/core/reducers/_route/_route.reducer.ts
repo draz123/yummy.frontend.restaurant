@@ -16,14 +16,21 @@ export const _routeReducer = (
   action: fromActions._RouteActions | any
 ) => {
   switch (action.type) {
+    case fromActions.ROOT:
+      return {
+        ...state,
+        data: [action.payload]
+      };
     case fromActions.PUSH:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         data: [...state.data, action.payload]
-      });
+      };
     case fromActions.POP:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         data: [...state.data.splice(-1,1)]
-      });
+      };
     default:
       return state;
   }

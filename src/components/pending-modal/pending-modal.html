@@ -1,0 +1,88 @@
+<button
+  (click)="close()"
+  ion-button
+  icon-only
+  outline
+  class="pending__close-button">
+  <ion-icon name="close"></ion-icon>
+</button>
+
+<div
+  class="pending__order">
+  <span
+    class="order__label">
+    Numer zamówienia: {{ (pending$ | async)?.id }}
+  </span>
+  <div
+    class="order__date">
+    <span
+      class="date__start">
+      <span class="date--label">czas zamówienia: </span>
+      <br>
+      godz: {{ (pending$ | async)?.orderTime | date: 'shortTime' }}
+      <br>
+      {{ (pending$ | async)?.orderTime | date: 'shortDate' }}
+    </span>
+    <span
+      class="date__end">
+      <span class="date--label">czas odbioru: </span>
+      <br>
+      godz: {{ (pending$ | async)?.receiveTime | date: 'shortTime' }}
+      <br>
+      {{ (pending$ | async)?.receiveTime | date: 'shortDate' }}
+    </span>
+  </div>
+</div>
+<div
+  class="pending__products">
+  <pending-modal-product
+    *ngFor="let product of (pending$ | async)?.orderItemList"
+    [product]="product">
+  </pending-modal-product>
+</div>
+
+<div
+  class="pending__summary">
+  <div></div>
+  <div
+    class="summary__count">
+    <span class="count__label">ilość</span> 
+    <span class="count__value">x</span>
+  </div>
+  <div></div>
+  <div></div>
+  <div
+    class="summary__value">
+    <span class="value__label">suma</span> 
+    <span class="value__value">pln</span>
+  </div>
+  <div></div>
+  <div></div>
+  <div 
+    class="summary__delivery">
+    odbiór:
+  </div>
+  <div
+    class="summary__button">
+    <span class="button__label">odebrane</span>
+    <button
+      (click)="complete()"
+      class="button__element"
+      ion-button
+      outline>
+      <ion-icon name="checkmark"></ion-icon>
+    </button>
+  </div>
+  <div
+    class="summary__button">
+    <span class="button__label">nieodebrane</span>
+    <button
+      (click)="cancel()"
+      class="button__element"
+      ion-button
+      outline>
+      <ion-icon name="close"></ion-icon>
+    </button>
+  </div>
+  
+</div>

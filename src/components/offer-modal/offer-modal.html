@@ -1,0 +1,134 @@
+<button
+  (click)="close()"
+  ion-button
+  icon-only
+  outline
+  class="offer__close-button">
+  <ion-icon name="close"></ion-icon>
+</button>
+<input #fileInput style="display: none" type="file" (change)="onImageChange($event)" />
+<form
+  class='offer__form'
+  [formGroup]="form"
+  (ngSubmit)="submit()">
+  <div
+    class="offer__thumbnail">
+    <img (click)="fileInput.click()" [src]="(form$ | async)?.image" #image />
+  </div>
+  <div
+    class="offer__meta">
+    <span class="meta__name medium bold">
+      {{ meta?.name || 'Nazwa produktu' }}
+    </span>
+    <br>
+    <span class="meta__id small">
+      {{ meta?.id || 'ID produktu' }}
+    </span>
+    <br>
+  </div>
+  <div></div>
+  <ion-item
+    class="offer__field">
+    <ion-input
+      class="offer__input small"
+      formControlName="name"
+      placeholder="Nazwa produktu"
+      type="text"
+      clearInput>
+    </ion-input>
+  </ion-item>
+  <ion-item
+    class="offer__field offer__desc">
+    <ion-label stacked>opis</ion-label>
+    <ion-textarea
+      class="offer__input small"
+      formControlName="description"
+      placeholder="Opis"
+      type="text"
+      clearInput>
+    </ion-textarea>
+  </ion-item>
+  <div
+    class="offer__label small">
+    cena wstępna
+  </div>
+  <ion-item
+    class="offer__field">
+    <ion-input
+      class="offer__input small"
+      formControlName="price"
+      placeholder="Cena wstępna"
+      type="text"
+      clearInput>
+    </ion-input>
+  </ion-item>
+  <div
+    class="offer__label small">
+    promocja
+  </div>
+  <ion-item
+    class="offer__field">
+    <ion-input
+      class="offer__input small"
+      formControlName="discount"
+      placeholder="Znizka"
+      type="text"
+      clearInput>
+    </ion-input>
+  </ion-item>
+  <div
+    class="offer__label small">
+    cena finalna
+  </div>
+  <ion-item
+    class="offer__field">
+    <ion-input
+      class="offer__input small"
+      formControlName="calculatedPrice"
+      placeholder="Nazwa produktu"
+      type="text"
+      clearInput>
+    </ion-input>
+  </ion-item>
+  <div
+    class="offer__label small">
+    ilość
+  </div>
+  <ion-item
+    class="offer__field">
+    <ion-input
+      class="offer__input small"
+      formControlName="count"
+      placeholder="Ilość produktów"
+      type="text"
+      clearInput>
+    </ion-input>
+  </ion-item>
+  <div></div>
+  <div
+    class="offer__buttons-bar">
+    <div
+      class="offer__button">
+      <span class="button__label">zapisz</span>
+      <button
+        type="submit"
+        class="button__element add"
+        ion-button
+        outline>
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </div>
+    <div
+      (click)="delete()"
+      class="offer__button">
+      <span class="button__label">usuń</span>
+      <button
+        disabled="true"
+        class="button__element close"
+        ion-button
+        outline>
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </div>
+  </div>
+</form>

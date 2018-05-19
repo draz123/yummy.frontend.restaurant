@@ -11,27 +11,6 @@ container-header {
     font-size: $fontLargeM;
     font-weight: 700;
   }
-  .button {
-    height: 100%;
-    width: $cntHeadHM * 1.2;
-    box-sizing: border-box;
-    margin: 0;
-    border-right: 0; 
-    border-top: 0;
-    border-bottom: 0;
-    border-radius: 0;
-    border-left: 3px solid $lightGray;
-    &.activated {
-      background-color: $darkGray;
-      * {
-        color: $white;
-      }
-    }
-    * {
-      font-size: $fontIconM;
-      color: $darkGray;
-    }
-  }
 }
 
 @media screen and (min-width: $mgTabletScreenWidth) {

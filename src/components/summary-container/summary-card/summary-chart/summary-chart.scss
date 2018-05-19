@@ -1,0 +1,52 @@
+summary-chart {
+  display: grid;
+  grid-template-areas: 
+    'label label'
+    'value progress';
+  grid-template-columns: 1fr 6fr;
+  grid-row-gap: $cntHeadHM / 8;
+  grid-template-rows: 1fr 1fr;
+  padding: $cntHeadHM / 8 0;
+  border-bottom: 2px solid $gray;
+  .chart__label, .chart__value {
+    font-size: $fontSmallM;
+  }
+  .chart__label {
+    grid-area: label;
+    color: $darkerGray;
+  }
+  .chart__value {
+    grid-area: value;
+    font-weight: 500;
+    color: $red;
+  }
+  .chart__progress {
+    grid-area: progress;
+    display: flex;
+    .progress__div {
+      width: 1%;
+      height: 100%;
+      background-color: $red;
+    }
+  }
+}
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  summary-chart {
+    grid-row-gap: $cntHeadHT / 8;
+    padding: $cntHeadHT / 8 0;
+    .chart__label, .chart__value {
+      font-size: $fontSmallT;
+    }
+  } 
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  summary-chart {
+    grid-row-gap: $cntHeadHD / 8;
+    padding: $cntHeadHD / 8 0;
+    .chart__label, .chart__value {
+      font-size: $fontSmallD;
+    }
+  } 
+}

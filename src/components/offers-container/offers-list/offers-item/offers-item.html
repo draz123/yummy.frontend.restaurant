@@ -1,0 +1,52 @@
+<div
+  class="item__thumbnail">
+  <img [src]="item?.image" />
+</div>
+<div
+  class="item__label bold">
+  {{ item?.description || '-' }}
+  {{ item?.type || '-' }}
+</div>
+<div
+  class="item__details">
+  <span
+    class="details__label">
+    ilość
+  </span>
+  <span
+    class="details__value bold">
+    {{ 'x' + item?.count || '-' }}
+  </span>
+</div>
+<span
+  class="item__value">
+  <span class="bold">{{ item?.calculatedPrice + ' pln'}}</span> ({{ '-' + item?.discount + '%'}})
+</span>
+<div
+  class="item__count-buttons">
+  <button
+    (click)="increaseCount(item)"
+    class="count-button"
+    ion-button
+    block
+    outline>
+    <ion-icon
+      name="add">
+    </ion-icon>
+  </button>
+  <button
+    (click)="decreaseCount(item)"
+    class="count-button"
+    ion-button
+    block
+    outline>
+    <ion-icon
+      name="remove">
+    </ion-icon>
+  </button>
+</div>
+<yummy-button
+  (buttonClick)="openItem(item.id)"
+  [icon]="'go'"
+  class="button-primary">
+</yummy-button>

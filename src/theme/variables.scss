@@ -48,26 +48,29 @@ $iconLogo: 2.4rem;
 
 $borderWidth: 0.55px;
 
+$fontTinyM: 1rem;
 $fontSmallM: 1.1rem;
 $fontMediumM: 1.4rem;
-$fontLargeM: 1.7rem;
+$fontLargeM: 1.5rem;
 $fontIconM: 2.5rem;
 
+$fontTinyT: 1.2rem;
 $fontSmallT: 1.4rem;
 $fontMediumT: 1.7rem;
-$fontLargeT: 2rem;
+$fontLargeT: 1.8rem;
 $fontIconT: 2.8rem;
 
+$fontTinyD: 1.45rem;
 $fontSmallD: 1.6rem;
 $fontMediumD: 1.9rem;
-$fontLargeD: 2.2rem;
+$fontLargeD: 2.0rem;
 $fontIconD: 3.1rem;
 
 // Components
 
 $cntHeadHM: 50px;
-$cntHeadHT: 75px;
-$cntHeadHD: 100px;
+$cntHeadHT: 65px;
+$cntHeadHD: 80px;
 
 // Header
 
@@ -94,14 +97,16 @@ $dashboardCardHead: 50px;
 $dashboardCardIcon: 1.8rem;
 
 $dashboardSmallWidth: 80%;
-$dashboardMediumWidth: 60%;
-$dashboardLargeWidth: 40%;
+$dashboardMediumWidth: 450px;
+$dashboardLargeWidth: 500px;
 
 $dashboardItemHeight: 60px;
 
 $dashboardSmallImg: 80px;
 $dashboardMediumImg: 120px;
 $dashboardLargeImg: 150px;
+
+$scrollHeight: 500px;
 
 // Login Form Component
 
@@ -110,8 +115,9 @@ $loginFormButtonMaxWidth: 200px;
 
 // // Media Queries Dimensions
 
-$mgTabletScreenWidth: 600px;
-$mgDesktopScreenWidth: 1025px;
+$mgTabletScreenWidth: 768px;
+$mgToggleMenuScreenWidth: 1200px;
+$mgDesktopScreenWidth: 1900px;
 
 // // Keyframes
 
@@ -134,7 +140,7 @@ $mgDesktopScreenWidth: 1025px;
 
 @font-face {
   font-family: "Ubuntu";
-  src: url("../assets/fonts/ubuntu/Ubuntu-R.ttf");
+  src: url("../assets/fonts/ubuntu/Ubuntu-L.ttf");
 }
 // // Ionic Variables
 

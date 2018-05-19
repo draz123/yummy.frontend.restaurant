@@ -1,0 +1,39 @@
+<div
+  class="product__thumbnail">
+  <img [src]="product?.image" />
+</div>
+<div
+  class="product__name">
+  <span
+    class="name__label">
+    {{ product?.name }}
+  </span>
+  <span
+    class="name__count">
+    <span class="count--label">ilość</span>
+    <span class="count--value bold">x {{ product?.count }}</span>
+  </span>
+</div>
+<div
+  class="product__price">
+  <div>
+    <span
+      class="discount__label">
+      promocja:
+    </span>
+    <span
+      class="discount__value">
+      <span class="bold">{{ product?.discount }}</span> %
+    </span>
+  </div>
+  <div>
+    <span
+      class="price__label">
+      cena:
+    </span>
+    <span
+      class="price__value">
+      <span class="bold">{{ product?.price }}</span> pln
+    </span>
+  </div>
+</div>

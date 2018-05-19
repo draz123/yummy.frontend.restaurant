@@ -15,13 +15,15 @@ export const _toastReducer = (
 ) => {
   switch (action.type) {
     case fromActions.SHOW:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         data: new _Toast(true, action.payload)
-      });
+      };
     case fromActions.HIDE:
-      return Object.assign({}, state, {
+      return {
+        ...state,
         data: new _Toast()
-      });
+      };
     default:
       return state;
   }
