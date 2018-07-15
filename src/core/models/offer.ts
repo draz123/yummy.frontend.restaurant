@@ -1,7 +1,7 @@
 export class Offer {
-  constructor(offer) {
+  constructor(offer: Offer) {
     Object.assign(this, offer);
-    if (!offer.calculatedPrive) {
+    if (!offer.calculatedPrice) {
       this.calculatedPrice = calculatePrice(this.price, this.discount);
     }
   }
