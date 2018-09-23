@@ -10,7 +10,7 @@ export class StompProvider {
   constructor() {}
 
   socketProvider() {
-    return new SockJS("http://yummy-backend.herokuapp.com/api/topics/panel");
+    return new SockJS("http://yummy-backend.herokuapp.com/yummy/api/restaurant-panel");
   }
 
   public connectSockets<T>(endpoint: string): Observable<T> {
@@ -24,7 +24,7 @@ export class StompProvider {
         },
         (frame) => {
           console.log("Connected: " + frame);
-          stompClient.subscribe("/topic/orders/current", (greeting) => {
+          stompClient.subscribe("/topic/restaurant/" + sessionStorage.__mail, (greeting) => {
             observer.next(greeting)
           });
         }
