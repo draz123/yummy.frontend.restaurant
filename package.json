@@ -1,6 +1,6 @@
 {
   "name": "yummy.frontend",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "Yummy App - Place Side",
   "private": true,
   "scripts": {
@@ -30,7 +30,9 @@
     "@ngrx/store": "^5.0.0",
     "@ngx-translate/core": "8.0.0",
     "@ngx-translate/http-loader": "^2.0.0",
-    "@stomp/ng2-stompjs": "^4.0.0",
+    "@stomp/ng2-stompjs": "4.0.0",
+    "@stomp/stompjs": "^4.0.7",
+    "@types/sockjs-client": "^1.1.0",
     "cordova-ios": "~4.5.4",
     "cordova-plugin-device": "^1.1.4",
     "cordova-plugin-ionic-webview": "^1.1.16",
@@ -41,7 +43,9 @@
     "ionic-plugin-keyboard": "^2.2.1",
     "ionicons": "3.0.0",
     "rxjs": "5.5.2",
+    "sockjs-client": "^1.1.5",
     "sw-toolbox": "3.6.0",
+    "websocket": "^1.0.26",
     "zone.js": "0.8.18"
   },
   "devDependencies": {

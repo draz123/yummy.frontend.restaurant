@@ -1,9 +1,11 @@
 export class Offer {
-  constructor(offer: Offer) {
-    Object.assign(this, offer);
-    if (!offer.calculatedPrice) {
-      this.calculatedPrice = calculatePrice(this.price, this.discount);
-    }
+  constructor(offer?: Offer) {
+    if (offer) {
+      Object.assign(this, offer);
+      if (!offer.calculatedPrice) {
+        this.calculatedPrice = calculatePrice(this.price, this.discount);
+      }
+    } 
   }
 
   public id: string | number = '';

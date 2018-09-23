@@ -11,7 +11,7 @@ import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { ReactiveFormsModule } from '@angular/forms';
 import { YummyPlace } from './app.component';
 
-import { Settings, OfferProvider, LoginProvider, Api, Rest, User } from '../core/providers/providers';
+import { Settings, OfferProvider, LoginProvider, Api, Rest, User, StompProvider } from '../core/providers/providers';
 import { HttpInterceptorProvider } from '../core/providers/http-interceptor/http-interceptor';
 
 import { StoreModule } from "@ngrx/store";
@@ -96,6 +96,7 @@ export function initializer(initializeProvider: Initializer) {
     LoginProvider,
     PendingProvider,
     TransactionsProvider,
+    StompProvider,
     Initializer,
     Camera,
     SplashScreen,

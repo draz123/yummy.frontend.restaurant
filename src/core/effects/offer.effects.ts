@@ -7,24 +7,26 @@ import { Offer } from "../models/offer";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Store } from "@ngrx/store";
 import { AppState } from "../app-state";
+import { StompProvider } from "../providers/providers";
 
 @Injectable()
 export class OfferEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private offerProvider: OfferProvider
+    private offerProvider: OfferProvider,
+    private stompProvider: StompProvider
   ) {}
 
-  @Effect()
-  public getOffers$ = this.actions$
-    .ofType(fromActions.FETCH_OFFERS)
-    .switchMap(() => this.offerProvider.getOffers())
-    .map((res: any | HttpErrorResponse) => {
-      return (!(res instanceof HttpErrorResponse) && res.offers)
-        ? new fromActions.FetchOffersSucc(res.offers)
-        : new fromActions.FetchOffersFail;
-    });
+  // @Effect()
+  // public getOffers$ = this.actions$
+  //   .ofType(fromActions.FETCH_OFFERS)
+  //   .switchMap(() => this.offerProvider.getOffers())
+  //   .map((res: any | HttpErrorResponse) => {
+  //     return (!(res instanceof HttpErrorResponse) && res.offers)
+  //       ? new fromActions.FetchOffersSucc(res.offers)
+  //       : new fromActions.FetchOffersFail;
+  //   });
 
   @Effect()
   public deleteOffer$ = this.actions$
@@ -50,5 +52,14 @@ export class OfferEffects {
       return (!(res instanceof HttpErrorResponse))
         ? new fromActions.UpdateOfferSucc(res)
         : new fromActions.UpdateOfferFail;
+    });
+
+  @Effect()
+  public socketOffers$ = this.stompProvider
+    .connectSockets('/topic/orders/current')
+    .map((res: any | HttpErrorResponse) => {
+      return (!(res instanceof HttpErrorResponse) && res.offers)
+        ? new fromActions.FetchOffersSucc(res.offers)
+        : new fromActions.FetchOffersFail;
     });
 }

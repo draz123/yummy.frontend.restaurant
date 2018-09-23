@@ -50,7 +50,7 @@ export class OfferModalComponent {
   }
 
   initForm(): void {
-    let tempForm: any = new Offer({});
+    let tempForm: any = new Offer();
     Object.keys(tempForm).map(function(key, index) {
       tempForm[key] = ["", Validators.required];
     });
@@ -65,7 +65,7 @@ export class OfferModalComponent {
     this.store
       .select((state) => state.offer.data)
       .map((offers: Offer[]) =>
-        offers.find((singleOffer: Offer) => singleOffer.id === id) || new Offer({})
+        offers.find((singleOffer: Offer) => singleOffer.id === id) || new Offer()
       )
       .take(1)
       .subscribe((offer: Offer) => {
@@ -78,7 +78,7 @@ export class OfferModalComponent {
 
   connectForm(): void {
     this.form$.subscribe((offerForm: OfferForm) => {
-      let tempForm: any = new Offer({});
+      let tempForm: any = new Offer();
       Object.keys(offerForm).map(function(key, index) {
         tempForm[key] = [offerForm[key] || "", Validators.required];
       });
