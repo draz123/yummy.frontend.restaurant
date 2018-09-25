@@ -31,7 +31,7 @@ import { TransactionModalComponent } from "../components/transaction-modal/trans
     <ion-menu [content]="content">
       <div class="placeholder"></div>
       <user-panel></user-panel>
-      <div class="meta">{{meta}}</div>
+      <div class="meta small">{{meta}}</div>
     </ion-menu>
     <ion-nav #content [root]="rootPage">
     </ion-nav>`

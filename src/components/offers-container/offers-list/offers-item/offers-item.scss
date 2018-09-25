@@ -35,6 +35,7 @@ offers-item {
   .item__label {
     grid-area: label;
     padding: $cntHeadHM / 8 $cntHeadHM / 8 0 $cntHeadHM / 8;
+    line-height: $cntHeadHM * 1.6 / 6;
   }
   .item__details {
     grid-area: details;
@@ -86,6 +87,7 @@ offers-item {
     }
     .item__label {
       padding: $cntHeadHT / 8 $cntHeadHT / 8 0 $cntHeadHT / 8;
+      line-height: $cntHeadHT * 1.6 / 6;
     }
     .details__label, .item__discount, .item__value {
       font-size: $fontTinyT;
@@ -113,6 +115,7 @@ offers-item {
     }
     .item__label {
       padding: $cntHeadHD / 8 $cntHeadHD / 8 $cntHeadHD / 8;
+      line-height: $cntHeadHD * 1.6 / 6;
     }
     .details__label, .item__discount, .item__value {
       font-size: $fontTinyD;

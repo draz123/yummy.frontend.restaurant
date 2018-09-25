@@ -3,13 +3,11 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpHeaders,
   HttpErrorResponse
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs/Observable";
 import { Settings } from "../providers";
-import { fromPromise } from "rxjs/observable/fromPromise";
 import { Store } from "@ngrx/store";
 import { AppState } from "../../app-state";
 import * as fromToastActions from '../../actions/_toast.actions';

@@ -6,7 +6,7 @@ export interface OfferFormState {
 }
 
 const initialState: any = {
-  data: new OfferForm({})
+  data: new OfferForm()
 };
 
 export const offerFormReducer = (
