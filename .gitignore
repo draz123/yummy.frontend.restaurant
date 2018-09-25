@@ -2,7 +2,7 @@ node_modules/*
 .sourcemaps/*
 platforms/*
 plugins/*
-www/*
+
 
 /node_modules
 npm-debug.log
