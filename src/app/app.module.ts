@@ -51,8 +51,6 @@ import { TransactionEffects } from "../core/effects/transaction.effects";
 import { OfferFormEffects } from "../core/effects/offer-form.effects";
 import { UserPanelComponent } from "../components/user-panel/user-panel";
 import { NgxPaginationModule } from "ngx-pagination";
-import { StompConfig, StompService } from "@stomp/ng2-stompjs";
-import * as SockJS from "sockjs-client";
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -65,30 +63,6 @@ export function provideSettings(storage: Storage) {
 export function initializer(initializeProvider: Initializer) {
   return () => initializeProvider.initialize();
 }
-
-export function socketProvider() {
-  return new SockJS(
-    "http://yummy-backend.herokuapp.com/api/topics/panel",
-    null,
-    {
-      headers: { 
-        "Access-Control-Allow-Origin": "*"
-      }
-    } as any
-  );
-}
-
-const stompConfig: StompConfig = {
-  url: socketProvider,
-  headers: {
-    login: "guest",
-    passcode: "guest"
-  },
-  heartbeat_in: 0,
-  heartbeat_out: 20000,
-  reconnect_delay: 50000000,
-  debug: false
-};
 
 @NgModule({
   declarations: [
@@ -146,11 +120,6 @@ const stompConfig: StompConfig = {
     Camera,
     SplashScreen,
     StatusBar,
-    StompService,
-    {
-      provide: StompConfig,
-      useValue: stompConfig
-    },
     {
       provide: Settings,
       useFactory: provideSettings,
