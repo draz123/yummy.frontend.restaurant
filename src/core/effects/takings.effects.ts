@@ -1,7 +1,10 @@
+
+import {of as observableOf,  Observable } from 'rxjs';
+
+import {map, tap, catchError, switchMap} from 'rxjs/operators';
 import { Actions, Effect } from "@ngrx/effects";
 import { AppState } from "../app-state";
 import { Store } from "@ngrx/store";
-import { Observable } from 'rxjs';
 
 import * as fromActions from "../actions/takings.actions";
 import * as fromOrderSummaryActions from "../actions/order-summary.actions";
@@ -20,11 +23,11 @@ export class TakingsEffects {
 
   @Effect()
   public fetchTakings$ = this.actions$
-    .ofType(fromActions.FETCH_TAKINGS)
-    .switchMap(() => this.rest.getTakings())
-    .catch((err) => Observable.of(err))
-    .do((res: HttpErrorResponse | any) => this.handleOrderSummary(res))
-    .map((res: HttpErrorResponse | any) => this.handleTakings(res));
+    .ofType(fromActions.FETCH_TAKINGS).pipe(
+    switchMap(() => this.rest.getTakings()),
+    catchError((err) => observableOf(err)),
+    tap((res: HttpErrorResponse | any) => this.handleOrderSummary(res)),
+    map((res: HttpErrorResponse | any) => this.handleTakings(res)),);
 
   handleTakings(res: HttpErrorResponse | any): fromActions.TakingsActions {
     return (!(res instanceof HttpErrorResponse) && res.takings) 

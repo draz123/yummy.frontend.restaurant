@@ -1,12 +1,16 @@
-<ion-infinite-scroll
-  class="list__scroll"
-  [enabled]="!(isFetching | async)">
-  <offers-item
-    class="list__item"
-    [item]="item"
-    *ngFor="let item of offers | async">
-  </offers-item>
-  <ion-spinner
-    *ngIf="isFetching | async">
-  </ion-spinner>
-</ion-infinite-scroll>
+<offers-item
+  class="list__item"
+  [item]="item"
+  *ngFor="let item of offers$ | async | paginate: { id: offerPagination, itemsPerPage: 5, currentPage: page$ | async }">
+</offers-item>
+<ion-spinner
+  *ngIf="isFetching$ | async">
+</ion-spinner>
+<pagination-controls 
+  class="blue"
+  autoHide="true"
+  id="offerPagination"
+  previousLabel="Poprzednie"
+  nextLabel="Następne"
+  (pageChange)="paginate($event)">
+</pagination-controls>

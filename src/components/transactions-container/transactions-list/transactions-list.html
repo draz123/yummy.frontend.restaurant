@@ -1,7 +1,17 @@
-<yummy-list
-  [items]="transactions$"
-  [isFetching]="isFetching$">
-  <ion-spinner
-    list-spinner>
-  </ion-spinner>
-</yummy-list>
+<transaction-item
+  class="list__item"
+  [item]="item"
+  [ngClass]="(item.isMarked) ? 'marked' : ''"
+  *ngFor="let item of transactions$ | async | paginate: { id: 'transactionPagination', itemsPerPage: 5, currentPage: page$ | async }">
+</transaction-item>
+<ion-spinner
+  *ngIf="isFetching$ | async">
+</ion-spinner>
+<pagination-controls
+  id="transactionPagination"
+  class="gray" 
+  autoHide="true"
+  previousLabel="Poprzednie"
+  nextLabel="Następne"
+  (pageChange)="paginate($event)">
+</pagination-controls>

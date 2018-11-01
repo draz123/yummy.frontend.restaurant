@@ -1,3 +1,5 @@
+
+import {map, take} from 'rxjs/operators';
 import { Component } from '@angular/core';
 import { NavParams } from 'ionic-angular';
 import { Store } from '@ngrx/store';
@@ -24,15 +26,15 @@ export class PendingModalComponent {
   }
 
   connectPending(id: string): void {
-    this.pending$ = this.store.select((state) => state.pending.data)
-      .map((pendings: Pending[]) => pendings.find(
+    this.pending$ = this.store.select((state) => state.pending.data).pipe(
+      map((pendings: Pending[]) => pendings.find(
         (singlePending: Pending) => singlePending.id === id
-      ));
+      )));
   }
 
   complete(): void {
-    this.pending$
-      .take(1)
+    this.pending$.pipe(
+      take(1))
       .subscribe((pending: Pending) => {
         this.close();
         this.store.dispatch(new fromActions.CompletePendings([pending.id]))
@@ -40,8 +42,8 @@ export class PendingModalComponent {
   }
 
   cancel(): void {
-    this.pending$
-      .take(1)
+    this.pending$.pipe(
+      take(1))
       .subscribe((pending: Pending) => {
         this.close();
         this.store.dispatch(new fromActions.CancelPendings([pending.id]))

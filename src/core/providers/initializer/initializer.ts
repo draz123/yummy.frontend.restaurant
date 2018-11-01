@@ -24,7 +24,6 @@ export class Initializer {
 
   initialize(): Promise<void> {
     return new Promise((resolve) => {
-      //console.log((window.cordova) ? "mobile/tab" : "browser");
       this.setRootPage().then(() => resolve(), () => resolve());
     });
   }

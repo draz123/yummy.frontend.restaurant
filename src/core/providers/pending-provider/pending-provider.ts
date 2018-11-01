@@ -1,6 +1,9 @@
+
+import {of as observableOf,  Observable } from 'rxjs';
+
+import {catchError} from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { Rest } from "../rest/rest";
-import { Observable } from 'rxjs';
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable()
@@ -10,8 +13,8 @@ export class PendingProvider {
 
   getPendings(): Observable<any> {
     return this.rest
-      .postPendings()
-      .catch((err: HttpErrorResponse) => Observable.of(err));
+      .postPendings().pipe(
+      catchError((err: HttpErrorResponse) => observableOf(err)));
   }
 
   createPendings(number: number): Observable<any> {
@@ -26,14 +29,14 @@ export class PendingProvider {
 
   completePendings(ids: string[]): Observable<any> {
     return this.rest
-      .updatePendings(ids, 'COMPLETED')
-      .catch((err: HttpErrorResponse) => Observable.of(err));
+      .updatePendings(ids, 'COMPLETED').pipe(
+      catchError((err: HttpErrorResponse) => observableOf(err)));
   }
 
   cancelPendings(ids: string[]): Observable<any> {
     return this.rest
-      .updatePendings(ids, 'CANCELED')
-      .catch((err: HttpErrorResponse) => Observable.of(err));
+      .updatePendings(ids, 'CANCELED').pipe(
+      catchError((err: HttpErrorResponse) => observableOf(err)));
   }
 
 }

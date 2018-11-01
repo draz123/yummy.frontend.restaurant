@@ -8,6 +8,15 @@ pending-list {
   .spinner > svg > circle {
     stroke: $orange;
   }
+  .list__item {
+    margin-bottom: $cntHeadHM / 8;
+  }
+  .spinner {
+    width: 100%;
+    margin: $cntHeadHM / 2;
+    display: flex;
+    align-content: center;
+  }
 }
 
 @media screen and (min-width: $mgTabletScreenWidth) {
@@ -16,6 +25,15 @@ pending-list {
     height: calc(100% - $cntHeadHT / 4);
     margin-left: $cntHeadHT / 4;
     margin-bottom: $cntHeadHT / 4;
+    .list__item {
+      margin-bottom: $cntHeadHT / 8;
+    }
+    .spinner {
+      width: 100%;
+      margin: $cntHeadHT / 2;
+      display: flex;
+      align-content: center;
+    }
   } 
 }
 
@@ -25,5 +43,14 @@ pending-list {
     height: calc(100% - $cntHeadHD / 4);
     margin-left: $cntHeadHD / 4;
     margin-bottom: $cntHeadHD / 4;
+    .list__item {
+      margin-bottom: $cntHeadHD / 8;
+    }
+    .spinner {
+      width: 100%;
+      margin: $cntHeadHD / 2;
+      display: flex;
+      align-content: center;
+    }
   } 
 }

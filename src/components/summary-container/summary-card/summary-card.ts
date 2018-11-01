@@ -9,13 +9,18 @@ import { Observable } from 'rxjs';
   templateUrl: 'summary-card.html'
 })
 export class SummaryCardComponent {
-
-  orderSummary$: Observable<OrderSummary>
+  public acceptedOrders$: Observable<number>;
+  public canceledOrders$: Observable<number>;
+  public completedOrders$: Observable<number>;
+  public missedOrders$: Observable<number>;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.orderSummary$ = this.store.select(state => state.orderSummary.data);
+    this.acceptedOrders$ = this.store.select(state => state.orderSummary.data.acceptedOrders);
+    this.canceledOrders$ = this.store.select(state => state.orderSummary.data.canceledOrders);
+    this.completedOrders$ = this.store.select(state => state.orderSummary.data.completedOrders);
+    this.missedOrders$ = this.store.select(state => state.orderSummary.data.missedOrders);
   }
 
 

@@ -17,7 +17,6 @@ transaction-item {
   pending-container &.marked {
     border-left-color: $orange;
   }
-  
   pending-container & {
     .item__receive-time {
       color: $orange;

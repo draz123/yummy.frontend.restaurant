@@ -1,3 +1,5 @@
+
+import {take, map} from 'rxjs/operators';
 import { Component, ViewChild, ElementRef } from "@angular/core";
 import * as fromActions from "../../core/actions/offer-form.actions";
 import * as fromModalActions from "../../core/actions/_modal.actions";
@@ -63,11 +65,11 @@ export class OfferModalComponent {
 
   connectOffer(id: string): void {
     this.store
-      .select((state) => state.offer.data)
-      .map((offers: Offer[]) =>
+      .select((state) => state.offer.data).pipe(
+      map((offers: Offer[]) =>
         offers.find((singleOffer: Offer) => singleOffer.id === id) || new Offer()
-      )
-      .take(1)
+      ),
+      take(1),)
       .subscribe((offer: Offer) => {
         this.initMeta(offer);
         this.store.dispatch(new fromActions.UpdateForm([offer, offer]));

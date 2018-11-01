@@ -1,3 +1,7 @@
+
+import {of as observableOf, combineLatest as observableCombineLatest,  Observable } from 'rxjs';
+
+import {tap, mergeMap} from 'rxjs/operators';
 import {
   HttpInterceptor,
   HttpRequest,
@@ -6,7 +10,6 @@ import {
   HttpErrorResponse
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs/Observable";
 import { Settings } from "../providers";
 import { Store } from "@ngrx/store";
 import { AppState } from "../../app-state";
@@ -34,7 +37,7 @@ export class HttpInterceptorProvider implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    return this.getHeadersValues().mergeMap(([authToken, login]) => {
+    return this.getHeadersValues().pipe(mergeMap(([authToken, login]) => {
       return next
         .handle(
           req.clone(
@@ -47,14 +50,14 @@ export class HttpInterceptorProvider implements HttpInterceptor {
                 }
               : {}
           )
-        )
-        .do(
+        ).pipe(
+        tap(
           () => {},
           (err: any) => {
             if (this.checkIfAuthError(err)) this.handleAuthError();
           }
-        );
-    });
+        ));
+    }));
   }
 
   checkIfAuthError(err: any): boolean {
@@ -79,9 +82,9 @@ export class HttpInterceptorProvider implements HttpInterceptor {
   }
 
   getHeadersValues(): Observable<any[]> {
-    return Observable.combineLatest(
-      Observable.of(sessionStorage.__th),
-      Observable.of(sessionStorage.__mail)
+    return observableCombineLatest(
+      observableOf(sessionStorage.__th),
+      observableOf(sessionStorage.__mail)
     );
   }
 }

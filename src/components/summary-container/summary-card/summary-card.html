@@ -6,19 +6,19 @@
   </span>
   <summary-chart
     [label]="'przyjęte'"
-    [progress$]="orderSummary$.pluck('acceptedOrders')">
+    [progress$]="acceptedOrders$">
   </summary-chart>
   <summary-chart
     [label]="'anulowane'"
-    [progress$]="orderSummary$?.pluck('canceledOrders')">
+    [progress$]="canceledOrders$">
   </summary-chart>
   <summary-chart
     [label]="'odebrane'"
-    [progress$]="orderSummary$.pluck('completedOrders')">
+    [progress$]="completedOrders$">
   </summary-chart>
   <summary-chart
     [label]="'nieodebrane'"
-    [progress$]="orderSummary$.pluck('missedOrders')">
+    [progress$]="missedOrders$">
   </summary-chart>
   <span
     class="content__takings">

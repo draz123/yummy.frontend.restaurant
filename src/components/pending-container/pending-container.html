@@ -1,25 +1,22 @@
 <container-header
   [title]="'Klienci'">
   <yummy-button
+    [hidden]="!(pendingsMarked$ | async)"
     (click)="complete()"
     button-primary
     [icon]="'accept'">
   </yummy-button>
   <yummy-button
+    [hidden]="!(pendingsMarked$ | async)"
     (click)="cancel()"
     button-secondary
     [icon]="'close'">
-  </yummy-button>
-  <yummy-button
-    (click)="create()"
-    button-tetriary
-    [icon]="'go'">
   </yummy-button>
 </container-header>
 <container-subheader
   class="orange-title"
   [title]="'Aktualne'"
-  [date]="'2018-12-12'">
+  [date]="date">
 </container-subheader>
 <pending-list>
 </pending-list>

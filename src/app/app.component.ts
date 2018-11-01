@@ -1,3 +1,6 @@
+import { of as observableOf, Observable, from as fromPromise } from "rxjs";
+
+import { map, pairwise, mergeMap, pluck, tap, switchMap } from "rxjs/operators";
 import { Component, ViewChild } from "@angular/core";
 import { SplashScreen } from "@ionic-native/splash-screen";
 import { StatusBar } from "@ionic-native/status-bar";
@@ -18,8 +21,6 @@ import { AppState } from "../core/app-state";
 import { _Route } from "../core/models/_route";
 import { _Toast } from "../core/models/_toast";
 import { _Loader } from "../core/models/_loader";
-import { Observable } from "rxjs";
-import { fromPromise } from "rxjs/observable/fromPromise";
 import { Initializer } from "../core/providers/initializer/initializer";
 import { _Modal, _ModalType } from "../core/models/_modal";
 import { OfferModalComponent } from "../components/offer-modal/offer-modal";
@@ -28,7 +29,7 @@ import { TransactionModalComponent } from "../components/transaction-modal/trans
 
 @Component({
   template: `
-    <ion-menu [content]="content">
+    <ion-menu [content]="content" [hidden]="!(isMenuEnabled$ | async)">
       <div class="placeholder"></div>
       <user-panel></user-panel>
       <div class="meta small">{{meta}}</div>
@@ -37,13 +38,13 @@ import { TransactionModalComponent } from "../components/transaction-modal/trans
     </ion-nav>`
 })
 export class YummyPlace {
-  @ViewChild(Nav) public nav: Nav;
+  @ViewChild(Nav)
+  public nav: Nav;
   public toast: any;
   public loader: any;
   public modal: any;
-  private rootPage: string;
-  private device: string;
-  private meta: string = `Delluptat ligenimus es velendis magnisqui odis eostion secatusa nis ad etures ate ni untis exerio in corest, aut aceped qui qui cus, sum es apellab orehenimpor ad mo ium quam, omni nus velique rem. Ut molutectus. Gitiis que voluptatur? Anis nobistrunt essi- tate nobisim quam, sunt fugiatiur as dolo- resciis am vellaborae o cie ndissim iliquisi reium aute optatiu ribuscitates sa vendend`;
+  public isMenuEnabled$: Observable<boolean>;
+  public rootPage: string;
 
   constructor(
     private translate: TranslateService,
@@ -70,6 +71,7 @@ export class YummyPlace {
       this.subscribeRoute();
       this.subscribeToaster();
       this.subscribeModal();
+      this.subscribeSwipe();
     });
     this.initTranslate();
   }
@@ -86,59 +88,81 @@ export class YummyPlace {
   subscribeRoute(): void {
     this.store
       .select((state) => state._route.data)
-      .pairwise()
-      .mergeMap(([prevRoutes, currRoutes]) => {
-        return currRoutes.length === 1
-          ? this.setRoot(currRoutes[currRoutes.length - 1])
-          : currRoutes.length > prevRoutes.length
-            ? this.pushPage(currRoutes[currRoutes.length - 1])
-            : this.popPage();
-      })
+      .pipe(
+        pairwise(),
+        mergeMap(([prevRoutes, currRoutes]) => {
+          return currRoutes.length === 1
+            ? this.setRoot(currRoutes[currRoutes.length - 1])
+            : currRoutes.length > prevRoutes.length
+              ? this.pushPage(currRoutes[currRoutes.length - 1])
+              : this.popPage();
+        })
+      )
       .subscribe();
+  }
+
+  subscribeSwipe(): void {
+    this.isMenuEnabled$ = this.store.select("_route").pipe(
+      pluck("data"),
+      map(
+        (routes: _Route[]) =>
+          routes.length === 1
+            ? new _Route(this.initializer.getRootPage())
+            : routes[routes.length - 1]
+      ),
+      tap((e) => console.log("page", e)),
+      map((route: _Route) => route.name !== "welcome")
+    );
   }
 
   subscribeLoader(): void {
     this.store
       .select((state) => state._loader.data)
-      .pairwise()
-      .mergeMap(([prevLoader, currLoader]) => {
-        return this.handleUIDisplay(
-          prevLoader,
-          currLoader,
-          () => this.showLoader(currLoader),
-          () => this.hideLoader()
-        );
-      })
+      .pipe(
+        pairwise(),
+        mergeMap(([prevLoader, currLoader]) => {
+          return this.handleUIDisplay(
+            prevLoader,
+            currLoader,
+            () => this.showLoader(currLoader),
+            () => this.hideLoader()
+          );
+        })
+      )
       .subscribe();
   }
 
   subscribeToaster(): void {
     this.store
       .select((state) => state._toast.data)
-      .pairwise()
-      .mergeMap(([prevToast, currToast]) => {
-        return this.handleUIDisplay(
-          prevToast,
-          currToast,
-          () => this.showToast(currToast),
-          () => this.hideToast()
-        );
-      })
+      .pipe(
+        pairwise(),
+        mergeMap(([prevToast, currToast]) => {
+          return this.handleUIDisplay(
+            prevToast,
+            currToast,
+            () => this.showToast(currToast),
+            () => this.hideToast()
+          );
+        })
+      )
       .subscribe();
   }
 
   subscribeModal(): void {
     this.store
       .select((state) => state._modal.data)
-      .pairwise()
-      .mergeMap(([prevModal, currModal]) => {
-        return this.handleUIDisplay(
-          prevModal,
-          currModal,
-          () => this.showModal(currModal),
-          () => this.hideModal()
-        );
-      })
+      .pipe(
+        pairwise(),
+        mergeMap(([prevModal, currModal]) => {
+          return this.handleUIDisplay(
+            prevModal,
+            currModal,
+            () => this.showModal(currModal),
+            () => this.hideModal()
+          );
+        })
+      )
       .subscribe();
   }
 
@@ -150,13 +174,13 @@ export class YummyPlace {
   ): Observable<any> {
     let obs: Observable<any>;
     if (!prevState.isShown && !currState.isShown) {
-      obs = Observable.of(null);
+      obs = observableOf(null);
     } else if (prevState.isShown && !currState.isShown) {
       obs = fromPromise(hideFn());
     } else if (!prevState.isShown && currState.isShown) {
       obs = fromPromise(shownFn());
     } else {
-      obs = fromPromise(hideFn()).switchMap(() => fromPromise(shownFn()));
+      obs = fromPromise(hideFn()).pipe(switchMap(() => fromPromise(shownFn())));
     }
     return obs;
   }

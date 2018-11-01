@@ -4,12 +4,13 @@ import * as fromAction from "../../actions/pending.actions";
 
 export interface PendingState {
   data: Pending[];
+  page: number,
   isFetching?: boolean;
 }
 
-//TODO remove mockup
 const initialState: PendingState = {
   data: [],
+  page: 1,
   isFetching: false
 };
 
@@ -46,6 +47,11 @@ export const pendingReducer: ActionReducer<PendingState> = (
               };
         })
       };
+    case fromAction.PAGINATE_PENDINGS:
+      return {
+        ...state,
+        page: action.payload
+      }
     default:
       return state;
   }

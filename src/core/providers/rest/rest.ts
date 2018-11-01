@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Api } from "../api/api";
 import { HttpClient } from "@angular/common/http";
 
-import { Observable } from "rxjs/Observable";
+import { Observable } from "rxjs";
 import { Offer } from "../../models/offer";
 import { AppConfig } from "../../../app/app.config";
 

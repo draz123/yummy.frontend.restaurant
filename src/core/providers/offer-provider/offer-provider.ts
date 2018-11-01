@@ -1,8 +1,10 @@
+
+import {of as observableOf,  Observable, BehaviorSubject } from 'rxjs';
+
+import {catchError, map} from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { Rest } from "../rest/rest";
 import { Offer } from "../../models/offer";
-
-import { Observable, BehaviorSubject } from "rxjs";
 import { HttpErrorResponse } from "@angular/common/http";
 
 @Injectable()
@@ -33,21 +35,21 @@ export class OfferProvider {
 
   getOffers(): Observable<any> {
     return this.rest
-      .getOffers()
-      .catch((err: HttpErrorResponse) => Observable.of(err));
+      .getOffers().pipe(
+      catchError((err: HttpErrorResponse) => observableOf(err)));
   }
 
   deleteOffer(offer: Offer): Observable<any> {
     return this.rest
-      .deleteOffer(offer.id)
-      .map(() => offer)
-      .catch((err: HttpErrorResponse) => Observable.of(err));
+      .deleteOffer(offer.id).pipe(
+      map(() => offer),
+      catchError((err: HttpErrorResponse) => observableOf(err)),);
   }
 
   updateOffer(offer: Offer): Observable<any> {
     return this.rest
-      .putOffer(offer)
-      .map(() => offer)
-      .catch((err: HttpErrorResponse) => Observable.of(err));
+      .putOffer(offer).pipe(
+      map(() => offer),
+      catchError((err: HttpErrorResponse) => observableOf(err)),);
   }
 }

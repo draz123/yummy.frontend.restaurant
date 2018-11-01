@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { User } from '../../core/models/user';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../core/app-state';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'user-panel',

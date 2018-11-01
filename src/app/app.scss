@@ -52,6 +52,34 @@ ion-content.content {
   }
 }
 
+// Pagination
+
+pagination-controls {
+  .ngx-pagination {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  &.orange {
+    li.current {
+      background: $orange;
+    }
+  }
+  &.gray {
+    li.current {
+      background: $darkerGray;
+    }
+  }
+  &.blue {
+    li.current {
+      background: $blue;
+    }
+  }
+
+}
+
+
+
 // Modal Mobile
 
 .modal-wrapper {
@@ -64,8 +92,7 @@ ion-content.content {
 // Fonts global
 
 div, span, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Ubuntu' !important;
-  font-weight: 100;
+  font-family: 'Ubuntu';
 }
 
 .darkGray {
@@ -81,11 +108,11 @@ div, span, h1, h2, h3, h4, h5, h6 {
 }
 
 .italic {
-  font-style: italic;
+  font-family: 'UbuntuItalic' !important;
 }
 
 .bold {
-  font-weight: 900;
+  font-family: 'UbuntuBold' !important;
 }
 
 .small {
@@ -227,6 +254,7 @@ ion-loading {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     transform: translateX(0) !important;
+    border-right: 1px solid $darkGray;
     > ion-header {
       position: relative;
     }

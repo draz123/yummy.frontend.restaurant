@@ -10,6 +10,7 @@ export const COMPLETE_PENDINGS_FAIL = "[Pending] Complete Pendings Fail";
 export const CANCEL_PENDINGS = "[Pending] Cancel Pendings";
 export const CANCEL_PENDINGS_SUCC = "[Pending] Cancel Pendings Succ";
 export const CANCEL_PENDINGS_FAIL = "[Pending] Cancel Pendings Fail";
+export const PAGINATE_PENDINGS = "[Pending] Paginate Pendings";
 
 export class FetchPendings implements Action {
   readonly type = FETCH_PENDINGS;
@@ -58,6 +59,11 @@ export class CancelPendingsFail implements Action {
   readonly type = CANCEL_PENDINGS_FAIL;
 }
 
+export class PaginatePendings implements Action {
+  readonly type = PAGINATE_PENDINGS;
+  constructor(public payload: number) {}
+}
+
 export type PendingActions =
   | FetchPendings
   | FetchPendingsSucc
@@ -68,4 +74,5 @@ export type PendingActions =
   | CompletePendingsFail
   | CancelPendings
   | CancelPendingsSucc
-  | CancelPendingsFail;
+  | CancelPendingsFail
+  | PaginatePendings;

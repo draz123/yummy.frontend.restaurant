@@ -1,3 +1,5 @@
+
+import {pluck, tap, map} from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from "@ngrx/effects";
 
@@ -19,21 +21,21 @@ export class OfferFormEffects {
 
   @Effect()
   public updateForm = this.actions$
-    .ofType(fromActions.UPDATE_FORM)
-    .pluck("payload")
-    .map(([prevState, currState]) => this.offerProvider.computeOffer(prevState, currState))
-    .map((offer: Offer) => Object.assign({
+    .ofType(fromActions.UPDATE_FORM).pipe(
+    pluck("payload"),
+    map(([prevState, currState]) => this.offerProvider.computeOffer(prevState, currState)),
+    map((offer: Offer) => Object.assign({
       data: offer
-    }))
-    .map((payload: OfferFormState) => new fromActions.UpdateFormSucc(payload));
+    })),
+    map((payload: OfferFormState) => new fromActions.UpdateFormSucc(payload)),);
 
   @Effect()
   public submitForm$ = this.actions$
-    .ofType(fromActions.SUBMIT_FORM)
-    .pluck("payload")
-    .do((payload: OfferFormState) =>
+    .ofType(fromActions.SUBMIT_FORM).pipe(
+    pluck("payload"),
+    tap((payload: OfferFormState) =>
       this.store.dispatch(new fromOfferActions.UpdateOffer(payload.data))
-    )
-    .map((payload: OfferFormState) => new fromActions.SubmitFormSucc(payload));
+    ),
+    map((payload: OfferFormState) => new fromActions.SubmitFormSucc(payload)),);
 
 }

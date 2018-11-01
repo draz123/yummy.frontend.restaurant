@@ -1,3 +1,5 @@
+
+import {take, pluck, tap, switchMap, map} from 'rxjs/operators';
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from "@ngrx/effects";
 import { HttpErrorResponse } from "@angular/common/http";
@@ -25,14 +27,14 @@ export class LoginFormEffects {
 
   @Effect()
   public loginUser$ = this.actions$
-    .ofType(fromActions.SUBMIT_FORM)
-    .pluck("payload")
-    .do((payload: LoginFormState) => this.handleSideBefore())
-    .switchMap((payload: LoginFormState) =>
+    .ofType(fromActions.SUBMIT_FORM).pipe(
+    pluck("payload"),
+    tap((payload: LoginFormState) => this.handleSideBefore()),
+    switchMap((payload: LoginFormState) =>
       this.loginProvider.loginUser(payload.data)
-    )
-    .do((res: null | HttpErrorResponse) => this.handleSideAfter(res))
-    .map((res: null | HttpErrorResponse) => this.handleLoginRes(res));
+    ),
+    tap((res: null | HttpErrorResponse) => this.handleSideAfter(res)),
+    map((res: null | HttpErrorResponse) => this.handleLoginRes(res)),);
 
   handleLoginRes(res: null | HttpErrorResponse): fromActions.LoginFormActions {
     return res instanceof HttpErrorResponse
@@ -48,7 +50,7 @@ export class LoginFormEffects {
     this.store.dispatch(new fromLoaderActions.Hide());
     if (!(res instanceof HttpErrorResponse)) {
       this.updateUser();
-      this.store.dispatch(new fromRouteActions.Root(new _Route("dashboard")));
+      this.store.dispatch(new fromRouteActions.Push(new _Route("dashboard")));
     } else {
       this.store.dispatch(
         new fromToastActions.Show(
@@ -60,9 +62,9 @@ export class LoginFormEffects {
 
   updateUser(): void {
     this.store
-      .select((state) => state.loginForm)
-      .take(1)
-      .do((res: LoginFormState) => sessionStorage.__mail = res.data.login)
+      .select((state) => state.loginForm).pipe(
+      take(1),
+      tap((res: LoginFormState) => sessionStorage.__mail = res.data.login),)
       .subscribe((data: LoginFormState) => {
         this.store.dispatch(new fromUserActions.UpdateUser(data));
       });
