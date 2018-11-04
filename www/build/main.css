@@ -26762,6 +26762,7 @@ offers-item .details__value, offers-item .item__label {
 }
 
 offers-item .item__label {
+  overflow: visible;
   grid-area: label;
   padding: 6.25px 6.25px 0 6.25px;
   line-height: 13.33333px;
