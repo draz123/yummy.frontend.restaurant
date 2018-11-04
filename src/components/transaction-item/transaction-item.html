@@ -4,15 +4,11 @@
 </span>
 <span
   class="item__order-date">
-  {{ item?.orderTime | date: 'shortTime' }}
-  <br>
-  {{ item?.orderTime | date: 'shortDate' }}
+  {{ item?.parsedOrderTime }}, {{ item?.parsedOrderDate }}
 </span>
 <span
   class="item__receive-time">
-  {{ item?.receiveTime | date: 'shortTime' }}
-  <br>
-  {{ item?.receiveTime | date: 'shortDate' }}
+  {{ item?.parsedReceiveTime }}, {{ item?.parsedReceiveDate }}
   <br>
 </span>
 <span

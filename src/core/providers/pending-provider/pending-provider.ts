@@ -1,39 +1,55 @@
+import { of as observableOf, Observable } from "rxjs";
+
+import { catchError, map } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 import { Rest } from "../rest/rest";
-import { Observable } from 'rxjs';
 import { HttpErrorResponse } from "@angular/common/http";
+import { Pending } from "../../models/pending";
+import { format } from "date-fns";
+import plLocale from "date-fns/locale/pl";
 
 @Injectable()
 export class PendingProvider {
-  
   constructor(private rest: Rest) {}
 
-  getPendings(): Observable<any> {
-    return this.rest
-      .postPendings()
-      .catch((err: HttpErrorResponse) => Observable.of(err));
-  }
-
-  createPendings(number: number): Observable<any> {
-    return this.rest.createPending({
-      transactions: Array(number).fill(null).map(() => Object.assign({
-        offerId: Math.floor(Math.random() * 5) + 13,
-        count: 1
+  public getPendings(): Observable<any> {
+    return this.rest.postPendings().pipe(
+      map((res: any) => ({
+        ...res,
+        currentOrderList: res.currentOrderList.map(this.parsePending)
       })),
-      receiveTimestamp: "2019-04-08T18:30:00"
-    });
+      catchError((err: HttpErrorResponse) => observableOf(err))
+    );
   }
 
-  completePendings(ids: string[]): Observable<any> {
+  public completePendings(ids: string[]): Observable<any> {
     return this.rest
-      .updatePendings(ids, 'COMPLETED')
-      .catch((err: HttpErrorResponse) => Observable.of(err));
+      .updatePendings(ids, "COMPLETED")
+      .pipe(catchError((err: HttpErrorResponse) => observableOf(err)));
   }
 
-  cancelPendings(ids: string[]): Observable<any> {
+  public cancelPendings(ids: string[]): Observable<any> {
     return this.rest
-      .updatePendings(ids, 'CANCELED')
-      .catch((err: HttpErrorResponse) => Observable.of(err));
+      .updatePendings(ids, "CANCELED")
+      .pipe(catchError((err: HttpErrorResponse) => observableOf(err)));
   }
 
+  private parsePending(unparsed: Pending): Pending {
+    const { orderTime, receiveTime } = unparsed;
+    return {
+      ...unparsed,
+      parsedOrderDate: format(orderTime, "DD MMMM", {
+        locale: plLocale
+      }),
+      parsedOrderTime: format(orderTime, "H:mm", {
+        locale: plLocale
+      }),
+      parsedReceiveDate: format(receiveTime, "D MMMM", {
+        locale: plLocale
+      }),
+      parsedReceiveTime: format(receiveTime, "H:mm", {
+        locale: plLocale
+      })
+    };
+  }
 }

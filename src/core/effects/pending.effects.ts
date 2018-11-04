@@ -1,3 +1,5 @@
+
+import {map, switchMap, pluck, tap} from 'rxjs/operators';
 import { Actions, Effect } from "@ngrx/effects";
 import { PendingProvider } from "../providers/pending-provider/pending-provider";
 import { Injectable } from "@angular/core";
@@ -18,49 +20,49 @@ export class PendingEffects {
 
   @Effect()
   public getPendings$ = this.actions$
-    .ofType(fromActions.FETCH_PENDINGS)
-    .switchMap(() => this.pendingProvider.getPendings())
-    .map((res: any | HttpErrorResponse) => {
+    .ofType(fromActions.FETCH_PENDINGS).pipe(
+    switchMap(() => this.pendingProvider.getPendings()),
+    map((res: any | HttpErrorResponse) => {
       return (!(res instanceof HttpErrorResponse) && res.currentOrderList)
         ? new fromActions.FetchPendingsSucc(res.currentOrderList)
         : new fromActions.FetchPendingsFail();
-    });
+    }),);
 
   @Effect()
   public completePendings$ = this.actions$
-    .ofType(fromActions.COMPLETE_PENDINGS)
-    .pluck('payload')
-    .do(() => this.store.dispatch(new fromLoaderActions.Show("Akceptowanie zamówień...")))
-    .switchMap((payload: string[]) => this.pendingProvider.completePendings(payload))
-    .do(() => this.store.dispatch(new fromLoaderActions.Hide))
-    .do((res: any | HttpErrorResponse) => {
+    .ofType(fromActions.COMPLETE_PENDINGS).pipe(
+    pluck('payload'),
+    tap(() => this.store.dispatch(new fromLoaderActions.Show("Akceptowanie zamówień..."))),
+    switchMap((payload: string[]) => this.pendingProvider.completePendings(payload)),
+    tap(() => this.store.dispatch(new fromLoaderActions.Hide)),
+    tap((res: any | HttpErrorResponse) => {
       if (!(res instanceof HttpErrorResponse)) {
         this.store.dispatch(new fromActions.FetchPendings({}));
         this.store.dispatch(new fromTransactionActions.FetchTransactions({}))
       } 
-    })
-    .map((res: any | HttpErrorResponse) => {
+    }),
+    map((res: any | HttpErrorResponse) => {
       return (!(res instanceof HttpErrorResponse))
         ? new fromActions.CompletePendingsSucc(res)
         : new fromActions.CompletePendingsFail();
-    });
+    }),);
 
   @Effect()
   public cancelPendings$ = this.actions$
-    .ofType(fromActions.CANCEL_PENDINGS)
-    .pluck('payload')
-    .do(() => this.store.dispatch(new fromLoaderActions.Show("Odrzucanie zamówień...")))
-    .switchMap((payload: string[]) => this.pendingProvider.cancelPendings(payload))
-    .do(() => this.store.dispatch(new fromLoaderActions.Hide))
-    .do((res: any | HttpErrorResponse) => {
+    .ofType(fromActions.CANCEL_PENDINGS).pipe(
+    pluck('payload'),
+    tap(() => this.store.dispatch(new fromLoaderActions.Show("Odrzucanie zamówień..."))),
+    switchMap((payload: string[]) => this.pendingProvider.cancelPendings(payload)),
+    tap(() => this.store.dispatch(new fromLoaderActions.Hide)),
+    tap((res: any | HttpErrorResponse) => {
       if (!(res instanceof HttpErrorResponse)) {
         this.store.dispatch(new fromActions.FetchPendings({}));
         this.store.dispatch(new fromTransactionActions.FetchTransactions({}))
       } 
-    })
-    .map((res: any | HttpErrorResponse) => {
+    }),
+    map((res: any | HttpErrorResponse) => {
       return (!(res instanceof HttpErrorResponse))
         ? new fromActions.CancelPendingsSucc(res)
         : new fromActions.CancelPendingsFail();
-    });
+    }),);
 }

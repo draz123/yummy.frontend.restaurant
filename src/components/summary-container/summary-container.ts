@@ -1,4 +1,5 @@
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { format } from 'date-fns';
 
 @Component({
   selector: 'summary-container',
@@ -6,6 +7,7 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SummaryContainerComponent {
+  public date: string = format(new Date(), 'DD-MM-YYYY');
 
   constructor() {}
 

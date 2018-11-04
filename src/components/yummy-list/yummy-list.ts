@@ -7,12 +7,11 @@ import { Observable } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class YummyListComponent {
-
   @Input() items: Observable<any[]>;
+  @Input() page: Observable<number>;
+  @Input() paginationId: string;
   @Input() isFetching: Observable<boolean>;
 
   constructor() {}
-
-  ngOnInit(): void {}
 
 }

@@ -1,3 +1,5 @@
+
+import {map} from 'rxjs/operators';
 import { Component, Input, ChangeDetectionStrategy } from "@angular/core";
 import { Observable } from 'rxjs';
 
@@ -14,7 +16,7 @@ export class SummaryChartComponent {
   constructor() {}
 
   ngOnInit() {
-    this.progressArray$ = this.progress$
-      .map((progress: number) => new Array(progress));
+    this.progressArray$ = this.progress$.pipe(
+      map((progress: number) => new Array(progress)));
   }
 }

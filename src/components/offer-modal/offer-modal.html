@@ -6,31 +6,57 @@
   class="offer__close-button">
   <ion-icon name="close"></ion-icon>
 </button>
-<input #fileInput style="display: none" type="file" (change)="onImageChange($event)" />
 <form
-  class='offer__form'
+  class='yummy__form'
+  [connectForm]="form$ | async"
   [formGroup]="form"
   (ngSubmit)="submit()">
   <div
-    class="offer__thumbnail">
-    <img (click)="fileInput.click()" [src]="(form$ | async)?.image" #image />
+    class="yummy__thumbnail">
+    <ion-icon
+      (click)="clearImage()"
+      [hidden]="!isImage"
+      class="thumbnail__clear"
+      name="close">
+    </ion-icon>
+    <img 
+      [hidden]="!isImage"
+      (click)="fileInput.click()" 
+      #image 
+    />
+    <div
+      *ngIf="!isImage" 
+      class="thumbnail__add">
+      <ion-icon
+        class="large"
+        name="pizza">
+      </ion-icon>
+    </div>
+    <div class="add__label">
+      {{ isImage ? "Edytuj zdjęcie" : "Dodaj zdjęcie" }}
+    </div>
+    <input 
+      class="thumbnail__input"
+      #fileInput 
+      type="file" 
+      (change)="onImageChange($event)" />
   </div>
   <div
-    class="offer__meta">
+    class="yummy__meta">
     <span class="meta__name medium bold">
-      {{ meta?.name || 'Nazwa produktu' }}
+      {{ (form$ | async)?.name || "Nowy Produkt" }}
     </span>
     <br>
-    <span class="meta__id small">
-      {{ meta?.id || 'ID produktu' }}
+    <span class="meta__id small" *ngIf="(form$ | async)?.id">
+      {{ (form$ | async)?.id }}
     </span>
     <br>
   </div>
   <div></div>
   <ion-item
-    class="offer__field">
+    class="yummy__field long">
     <ion-input
-      class="offer__input small"
+      class="yummy__input small"
       formControlName="name"
       placeholder="Nazwa produktu"
       type="text"
@@ -38,10 +64,10 @@
     </ion-input>
   </ion-item>
   <ion-item
-    class="offer__field offer__desc">
+    class="yummy__field yummy__desc long">
     <ion-label stacked>opis</ion-label>
     <ion-textarea
-      class="offer__input small"
+      class="yummy__input small"
       formControlName="description"
       placeholder="Opis"
       type="text"
@@ -49,66 +75,107 @@
     </ion-textarea>
   </ion-item>
   <div
-    class="offer__label small">
+    class="yummy__label small">
     cena wstępna
   </div>
   <ion-item
-    class="offer__field">
+    class="yummy__field">
     <ion-input
-      class="offer__input small"
+      class="yummy__input small"
       formControlName="price"
       placeholder="Cena wstępna"
-      type="text"
+      type="number"
       clearInput>
     </ion-input>
   </ion-item>
+  <div class="yummy__currency">
+    <div class="currency__label small">
+      PLN
+    </div>
+  </div>
   <div
-    class="offer__label small">
+    class="yummy__label small">
     promocja
   </div>
   <ion-item
-    class="offer__field">
+    class="yummy__field">
     <ion-input
-      class="offer__input small"
+      class="yummy__input small"
       formControlName="discount"
-      placeholder="Znizka"
-      type="text"
+      placeholder="Zniżka"
+      type="number"
       clearInput>
     </ion-input>
   </ion-item>
+  <div class="yummy__currency">
+    <ion-select
+      class="currency__select"
+      cancelText="Anuluj"
+      okText="Ok"
+      formControlName="discountMetric">
+      <ion-option value="PERCENTAGE">%</ion-option>
+      <ion-option value="PRICE">PLN</ion-option>
+    </ion-select>
+    <div class="currency__label small">
+      {{ ((form.value?.discountMetric || "PERCENTAGE") === "PERCENTAGE" ) ? "%" : "PLN" }}
+    </div>
+  </div>
   <div
-    class="offer__label small">
+    class="yummy__label small">
     cena finalna
   </div>
   <ion-item
-    class="offer__field">
+    class="yummy__field">
     <ion-input
-      class="offer__input small"
+      class="yummy__input small"
       formControlName="calculatedPrice"
-      placeholder="Nazwa produktu"
-      type="text"
+      placeholder="Cena po zniżce"
+      type="number"
       clearInput>
     </ion-input>
   </ion-item>
+  <div class="yummy__currency">
+    <div class="currency__label small">
+      PLN
+    </div>
+  </div>
   <div
-    class="offer__label small">
+    class="yummy__label small">
+    dostępność
+  </div>
+  <ion-item
+    class="yummy__field long">
+    <ion-datetime 
+      placeholder="Start dostępności"
+      class="field__datetime first small"
+      formControlName="startDate"
+      displayFormat="HH:mm">
+    </ion-datetime>
+    <ion-datetime 
+      placeholder="Koniec dostępności"
+      class="field__datetime small"
+      formControlName="endDate"
+      displayFormat="HH:mm">
+    </ion-datetime>
+  </ion-item>
+  <div
+    class="yummy__label small">
     ilość
   </div>
   <ion-item
-    class="offer__field">
+    class="yummy__field long">
     <ion-input
-      class="offer__input small"
+      class="yummy__input small"
       formControlName="count"
       placeholder="Ilość produktów"
-      type="text"
+      type="number"
       clearInput>
     </ion-input>
   </ion-item>
-  <div></div>
   <div
-    class="offer__buttons-bar">
+    class="yummy__buttons-bar">
     <div
-      class="offer__button">
+      class="yummy__button">
       <span class="button__label">zapisz</span>
       <button
         type="submit"
@@ -119,8 +186,9 @@
       </button>
     </div>
     <div
+      *ngIf="(form$ | async)?.id"
       (click)="delete()"
-      class="offer__button">
+      class="yummy__button">
       <span class="button__label">usuń</span>
       <button
         disabled="true"

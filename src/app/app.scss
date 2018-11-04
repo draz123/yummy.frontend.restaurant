@@ -52,6 +52,238 @@ ion-content.content {
   }
 }
 
+// Pagination
+
+pagination-controls {
+  .ngx-pagination {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+  }
+  &.orange {
+    li.current {
+      background: $orange;
+    }
+  }
+  &.gray {
+    li.current {
+      background: $darkerGray;
+    }
+  }
+  &.blue {
+    li.current {
+      background: $blue;
+    }
+  }
+
+}
+
+// Yummy Form
+
+.yummy__form {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: start;
+  padding: $cntHeadHM / 3 $cntHeadHM / 3 0 $cntHeadHM / 3;
+  grid-gap: $cntHeadHM / 6;
+  grid-template-columns: auto 1fr 1fr auto;
+  .yummy__field {
+    grid-column: 2/4;
+    &.long {
+      grid-column: 2/5;
+    }
+    .item-inner {
+      border-width: 0;
+      box-shadow: 0 0 0 0 !important;
+    }
+    .field__datetime {
+      flex: 1;
+      border-bottom: 2px solid $darkGray;
+      padding: 13px 8px 13px 8px;
+      &.first {
+        margin-right: $cntHeadHM / 6;
+        .item-cover {
+          left: 0;
+        }
+      }
+      .item-cover {
+        left: 50%;
+        width: 50%;
+      }
+    }
+  }
+  .yummy__input {
+    border-bottom: 2px solid $darkGray;
+  }
+  .yummy__currency {
+    color: $darkerGray;
+    border-bottom: 2px solid $darkGray;
+    position: relative;
+  }
+  .currency__label {
+    position: relative;
+    margin: 13px 8px;
+  }
+  .currency__select {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    z-index: 5;
+  }
+  .yummy__thumbnail {
+    grid-column: 1/5;
+    grid-row: 2/3;
+    position: relative;
+    justify-self: center;
+    width: 200px;
+    min-height: 100px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .thumbnail__add {
+    background: $darkerGray;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    flex: 1;
+  }
+  .add__label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    height: 30px;
+    bottom: 0;
+    width: 100%;
+    background: $blue;
+    opacity: 0.7;
+    color: $white;
+  }
+  .thumbnail__input {
+    cursor: pointer;
+    opacity: 0;
+    position: absolute;
+    flex: 1;
+    height: 30px;
+    bottom: 0;
+    width: 100%;
+    z-index: 1;
+  }
+  .thumbnail__clear {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background: $blue;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    opacity: 0.7;
+    z-index: 3;
+    color: $white;
+  }
+  .yummy__meta {
+    grid-column: 2/4;
+    padding: 0 $cntHeadHM / 3;
+  }
+  .yummy__desc {
+    min-height: 100px;
+    .yummy__input {
+      margin: 4px 8px;
+    }
+  }
+  .yummy__label {
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    color: $darkerGray;
+    justify-content: center;
+  }
+  .yummy__buttons-bar {
+    grid-column: 3/5;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    .yummy__button {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-left: 2px solid $lightGray;
+      .button__element {
+        border: 0;
+        &.close {
+          opacity: 1;
+          color: $red;
+          .button-effect {
+            background-color: $red;
+          }
+          &.activated {
+            background-color: $red;
+            * {
+              color: $white;
+            }
+          }
+        }
+        &.add {
+          color: $blue;
+          .button-effect {
+            background-color: $blue;
+          }
+          &.activated {
+            background-color: $blue;
+            * {
+              color: $white;
+            }
+          }
+        }
+        * {
+          font-size: $fontIconM;
+        }
+      }
+    }
+  }
+}
+
+
+@media screen and (min-width: $mgTabletScreenWidth) {
+  .yummy__form {
+    padding: $cntHeadHT / 4 $cntHeadHT / 4 0 $cntHeadHT / 4;
+    grid-gap: $cntHeadHT / 8;
+    align-content: space-between;
+    .yummy__thumbnail {
+      grid-column: initial;
+      grid-row: 1/4;
+      width: 250px;
+      min-height: 125px;
+    }
+    .yummy__meta {
+      padding-left: $cntHeadHT / 8;
+    }
+  }
+}
+
+@media screen and (min-width: $mgDesktopScreenWidth) {
+  .yummy__form {
+    padding: $cntHeadHD / 4 $cntHeadHD / 4 0 $cntHeadHD / 4;
+    grid-gap: $cntHeadHT / 8;
+    .yummy__meta {
+      padding-left: $cntHeadHD / 8;
+    }
+  }
+}
+
 // Modal Mobile
 
 .modal-wrapper {
@@ -64,12 +296,23 @@ ion-content.content {
 // Fonts global
 
 div, span, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Ubuntu' !important;
-  font-weight: 100;
+  font-family: 'Ubuntu';
 }
 
-.darkGray {
+.gray-color {
   color: $darkerGray;
+}
+
+.orange-color {
+  color: $orange;
+}
+
+.red-color {
+  color: $red;
+}
+
+.blue-color {
+  color: $blue;
 }
 
 .right {
@@ -81,11 +324,11 @@ div, span, h1, h2, h3, h4, h5, h6 {
 }
 
 .italic {
-  font-style: italic;
+  font-family: 'UbuntuItalic' !important;
 }
 
 .bold {
-  font-weight: 900;
+  font-family: 'UbuntuBold' !important;
 }
 
 .small {
@@ -100,6 +343,21 @@ div, span, h1, h2, h3, h4, h5, h6 {
   font-size: $fontLarge;
 }
 
+.ellipsis-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.ellipsis-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
 // Icons Positioning
 
 .centered-icon {
@@ -227,6 +485,7 @@ ion-loading {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
     transform: translateX(0) !important;
+    border-right: 1px solid $darkGray;
     > ion-header {
       position: relative;
     }

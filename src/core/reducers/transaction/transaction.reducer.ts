@@ -4,12 +4,14 @@ import * as fromAction from "../../actions/transaction.actions";
 
 export interface TransactionState {
   data: Transaction[];
+  page: number,
   isFetching?: boolean;
 }
 
 //TODO remove mockup
 const initialState: TransactionState = {
   data: [],
+  page: 1,
   isFetching: false
 };
 
@@ -34,6 +36,11 @@ export const transactionReducer: ActionReducer<TransactionState> = (
         ...state,
         isFetching: false
       };
+    case fromAction.PAGINATE_TRANSACTIONS:
+      return {
+        ...state,
+        page: action.payload
+      }
     default:
       return state;
   }

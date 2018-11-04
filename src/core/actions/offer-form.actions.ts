@@ -1,5 +1,4 @@
 import { Action } from "@ngrx/store";
-import { OfferForm } from "../models/offer-form";
 import { OfferFormState } from "../reducers/offer-form/offer-form.reducer";
 
 export const UPDATE_FORM = "[OfferForm] Update Form";

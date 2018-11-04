@@ -4,11 +4,13 @@ import * as fromAction from "../../actions/offer.actions";
 
 export interface OfferState {
   data: Offer[],
+  page: number,
   isFetching?: boolean
 }
 
 const initialState: OfferState = {
   data: [],
+  page: 1,
   isFetching: false
 };
 
@@ -41,6 +43,11 @@ export const offerReducer: ActionReducer<OfferState> = (
       return {
         ...state,
         isFetching: false
+      }
+    case fromAction.PAGINATE_OFFERS:
+      return {
+        ...state,
+        page: action.payload
       }
     default:
       return state;

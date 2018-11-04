@@ -11,7 +11,6 @@ pending-modal {
     top: $cntHeadHM / 8;
     right: $cntHeadHM / 8;
     border: 0;
-    color: $darkGray;
     .button-effect {
       background-color: $darkGray;
     }
@@ -49,9 +48,6 @@ pending-modal {
   }
   .pending__summary {
     padding: $cntHeadHM / 3 $cntHeadHM / 6 0 $cntHeadHM / 6;
-  }
-  .order__label {
-    font-weight: 900;
   }
   .order__date {
     display: grid;

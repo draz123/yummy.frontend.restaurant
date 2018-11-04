@@ -9,9 +9,9 @@
   <div
     class="badge__info">
     <span class="small">profil</span>
-    <span class="medium bold">Admin</span>
+    <span class="medium bold">{{ (user$ | async)?.name }}</span>
     <span class="small">{{ (user$ | async)?.login }}</span>
-    <span class="small">adres</span>
+    <span class="small">{{ (user$ | async)?.address }}</span>
   </div>
 </div>
 <div

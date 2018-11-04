@@ -1,7 +1,9 @@
+import { map, pluck, tap, switchMap } from "rxjs/operators";
 import { Injectable } from "@angular/core";
 import { Actions, Effect } from "@ngrx/effects";
 import * as fromActions from "../actions/offer.actions";
 import * as fromLoaderActions from "../actions/_loader.actions";
+import * as fromModalActions from "../actions/_modal.actions";
 import { OfferProvider } from "../providers/offer-provider/offer-provider";
 import { Offer } from "../models/offer";
 import { HttpErrorResponse } from "@angular/common/http";
@@ -18,48 +20,55 @@ export class OfferEffects {
     private stompProvider: StompProvider
   ) {}
 
-  // @Effect()
-  // public getOffers$ = this.actions$
-  //   .ofType(fromActions.FETCH_OFFERS)
-  //   .switchMap(() => this.offerProvider.getOffers())
-  //   .map((res: any | HttpErrorResponse) => {
-  //     return (!(res instanceof HttpErrorResponse) && res.offers)
-  //       ? new fromActions.FetchOffersSucc(res.offers)
-  //       : new fromActions.FetchOffersFail;
-  //   });
-
   @Effect()
-  public deleteOffer$ = this.actions$
-    .ofType(fromActions.DELETE_OFFER)
-    .pluck("payload")
-    .do(() => this.store.dispatch(new fromLoaderActions.Show("Usuwanie oferty...")))
-    .switchMap((payload: Offer) => this.offerProvider.deleteOffer(payload))
-    .do(() => this.store.dispatch(new fromLoaderActions.Hide))
-    .map((res: Offer | HttpErrorResponse) => {
-      return (!(res instanceof HttpErrorResponse))
+  public deleteOffer$ = this.actions$.ofType(fromActions.DELETE_OFFER).pipe(
+    pluck("payload"),
+    tap(() =>
+      this.store.dispatch(new fromLoaderActions.Show("Usuwanie oferty..."))
+    ),
+    switchMap((payload: Offer) => this.offerProvider.deleteOffer(payload)),
+    tap(() => this.store.dispatch(new fromLoaderActions.Hide())),
+    map((res: Offer | HttpErrorResponse) => {
+      return !(res instanceof HttpErrorResponse)
         ? new fromActions.DeleteOfferSucc(res)
-        : new fromActions.DeleteOfferFail;
-    });
+        : new fromActions.DeleteOfferFail();
+    })
+  );
 
   @Effect()
-  public updateOffer$ = this.actions$
-    .ofType(fromActions.UPDATE_OFFER)
-    .pluck("payload")
-    .do(() => this.store.dispatch(new fromLoaderActions.Show("Aktualizacja oferty...")))
-    .switchMap((payload: Offer) => this.offerProvider.updateOffer(payload))
-    .do(() => this.store.dispatch(new fromLoaderActions.Hide))
-    .map((res: Offer | HttpErrorResponse) => {
-      return (!(res instanceof HttpErrorResponse))
+  public updateOffer$ = this.actions$.ofType(fromActions.UPDATE_OFFER).pipe(
+    pluck("payload"),
+    tap((payload: Offer) =>
+      this.store.dispatch(
+        new fromLoaderActions.Show(
+          payload.id ? "Aktualizacja oferty..." : "Dodawanie oferty..."
+        )
+      )
+    ),
+    switchMap(
+      (payload: Offer) =>
+        payload.id
+          ? this.offerProvider.updateOffer(payload)
+          : this.offerProvider.addOffer(payload)
+    ),
+    tap(() => this.store.dispatch(new fromLoaderActions.Hide())),
+    tap(() => this.store.dispatch(new fromModalActions.Hide())),
+    map((res: Offer | HttpErrorResponse) => {
+      return !(res instanceof HttpErrorResponse)
         ? new fromActions.UpdateOfferSucc(res)
-        : new fromActions.UpdateOfferFail;
-    });
+        : new fromActions.UpdateOfferFail();
+    })
+  );
 
   @Effect()
   public socketOffers$ = this.stompProvider
-    .connectSockets('/topic/orders/current')
-    .map((res: any | HttpErrorResponse) => {
-      return (!(res instanceof HttpErrorResponse) && res.offers)
-        ? new fromActions.FetchOffersSucc(res.offers)
-        : new fromActions.FetchOffersFail;
-    });
+    .connectSockets("/topic/orders/current")
+    .pipe(
+      map((res: any | HttpErrorResponse) => {
+        return !(res instanceof HttpErrorResponse) && res.offers
+          ? new fromActions.FetchOffersSucc(res.offers)
+          : new fromActions.FetchOffersFail();
+      })
+    );
+
 }

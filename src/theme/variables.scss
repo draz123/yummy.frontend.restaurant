@@ -140,8 +140,24 @@ $mgDesktopScreenWidth: 1900px;
 
 @font-face {
   font-family: "Ubuntu";
+  src: url("../assets/fonts/ubuntu/Ubuntu-R.ttf");
+}
+
+@font-face {
+  font-family: "UbuntuBold";
+  src: url("../assets/fonts/ubuntu/Ubuntu-B.ttf");
+}
+
+@font-face {
+  font-family: "UbuntuItalic";
+  src: url("../assets/fonts/ubuntu/Ubuntu-RI.ttf");
+}
+
+@font-face {
+  font-family: "UbuntuLight";
   src: url("../assets/fonts/ubuntu/Ubuntu-L.ttf");
 }
+
 // // Ionic Variables
 
 $toolbar-ios-height: $cntHeadHT;

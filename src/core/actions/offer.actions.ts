@@ -11,6 +11,7 @@ export const DELETE_OFFER_FAIL = "[Offer] Delete Offer Fail";
 export const FETCH_OFFERS = "[Offer] Fetch Offers";
 export const FETCH_OFFERS_SUCC = "[Offer] Fetch Offers Succ";
 export const FETCH_OFFERS_FAIL = "[Offer] Fetch Offers Fail";
+export const PAGINATE_OFFERS = "[Offer] Paginate Offers";
 
 export class AddOffer implements Action {
   readonly type = ADD_OFFER;
@@ -55,6 +56,10 @@ export class FetchOffersSucc implements Action {
 export class FetchOffersFail implements Action {
   readonly type = FETCH_OFFERS_FAIL;
 }
+export class PaginateOffers implements Action {
+  readonly type = PAGINATE_OFFERS;
+  constructor(public payload: number) {}
+}
 
 export type OfferActions =
   | AddOffer
@@ -64,4 +69,5 @@ export type OfferActions =
   | DeleteOffer
   | FetchOffers
   | FetchOffersSucc
-  | FetchOffersFail;
+  | FetchOffersFail
+  | PaginateOffers;

@@ -25,6 +25,7 @@ import { YummyButtonComponent } from './yummy-button/yummy-button';
 import { PendingModalProductComponent } from './pending-modal/pending-modal-product/pending-modal-product';
 import { SupportModalComponent } from './support-modal/support-modal';
 import { MediaModalComponent } from './media-modal/media-modal';
+import { NgxPaginationModule } from "ngx-pagination";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { MediaModalComponent } from './media-modal/media-modal';
     IonicModule,
     DirectivesModule,
     ReactiveFormsModule,
-    TranslateModule
+    TranslateModule,
+    NgxPaginationModule
   ],
   exports: [
     LoginFormComponent,
