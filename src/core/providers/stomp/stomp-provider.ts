@@ -11,7 +11,7 @@ export class StompProvider {
 
   socketProvider() {
     return new SockJS(
-      "http://yummy-backend.herokuapp.com/yummy/api/restaurant-panel"
+      "https://yummy-backend.herokuapp.com/yummy/api/restaurant-panel"
     );
   }
 

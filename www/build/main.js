@@ -808,15 +808,15 @@ var map = {
 		3
 	],
 	"../pages/dashboard/dashboard.module": [
-		781,
+		780,
 		1
 	],
 	"../pages/menu/menu.module": [
-		779,
+		781,
 		2
 	],
 	"../pages/welcome/welcome.module": [
-		780,
+		779,
 		0
 	]
 };
@@ -1615,9 +1615,9 @@ var AppModule = (function () {
                     links: [
                         { loadChildren: '../pages/cards/cards.module#CardsPageModule', name: 'CardsPage', segment: 'cards', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/content/content.module#ContentPageModule', name: 'ContentPage', segment: 'content', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] },
                         { loadChildren: '../pages/welcome/welcome.module#WelcomePageModule', name: 'welcome', segment: 'welcome', priority: 'low', defaultHistory: [] },
-                        { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'dashboard', segment: 'dashboard', priority: 'low', defaultHistory: [] }
+                        { loadChildren: '../pages/dashboard/dashboard.module#DashboardPageModule', name: 'dashboard', segment: 'dashboard', priority: 'low', defaultHistory: [] },
+                        { loadChildren: '../pages/menu/menu.module#MenuPageModule', name: 'MenuPage', segment: 'menu', priority: 'low', defaultHistory: [] }
                     ]
                 }),
                 __WEBPACK_IMPORTED_MODULE_6__ionic_storage__["a" /* IonicStorageModule */].forRoot(),
@@ -2190,7 +2190,7 @@ var StompProvider = (function () {
     function StompProvider() {
     }
     StompProvider.prototype.socketProvider = function () {
-        return new __WEBPACK_IMPORTED_MODULE_2_sockjs_client___default.a("http://yummy-backend.herokuapp.com/yummy/api/restaurant-panel");
+        return new __WEBPACK_IMPORTED_MODULE_2_sockjs_client___default.a("https://yummy-backend.herokuapp.com/yummy/api/restaurant-panel");
     };
     StompProvider.prototype.connectSockets = function (endpoint) {
         var _this = this;
