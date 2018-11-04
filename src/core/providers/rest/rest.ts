@@ -22,25 +22,25 @@ export class Rest extends Api {
     this.config = AppConfig.rest;
   }
 
-  parseUrl(endpoint: string): string {
+  private parseUrl(endpoint: string): string {
     let { rootUrl: root } = this.config;
 
     return `${root}/${endpoint}`;
   }
 
-  loginUser(body: LoginUserBody): Observable<any> {
+  public loginUser(body: LoginUserBody): Observable<any> {
     return this.post(this.parseUrl("login"), body);
   }
 
-  getTakings(): Observable<any> {
+  public getTakings(): Observable<any> {
     return this.get(this.parseUrl("balance"));
   }
 
-  createPending(body: any): Observable<any> {
+  public createPending(body: any): Observable<any> {
     return this.post(this.parseUrl('transaction'), body);
   }
 
-  postPendings(
+  public postPendings(
     page: number = 0,
     size: number = 8
   ): Observable<any> {
@@ -50,7 +50,7 @@ export class Rest extends Api {
     });
   }
 
-  updatePendings(
+  public updatePendings(
     ids: string[],
     state: 'COMPLETED' | 'CANCELED'
   ): Observable<any> {
@@ -60,29 +60,29 @@ export class Rest extends Api {
     });
   }
 
-  getOffers(): Observable<any> {
+  public getOffers(): Observable<any> {
     return this.get(this.parseUrl("offers"));
   }
 
-  getSingleOffer(id: string): Observable<any> {
+  public getSingleOffer(id: string): Observable<any> {
     return this.get(this.parseUrl("offer"), {
       id: id
     });
   }
 
-  postOffer(body: OfferBody): Observable<any> {
+  public postOffer(body: OfferBody): Observable<any> {
     return this.post(this.parseUrl(`offer`), body);
   }
 
-  deleteOffer(id: string | number): Observable<any> {
+  public deleteOffer(id: string | number): Observable<any> {
     return this.get(this.parseUrl(`offer/delete?id=${id}`));
   }
 
-  putOffer(body: OfferBody): Observable<any> {
+  public putOffer(body: OfferBody): Observable<any> {
     return this.post(this.parseUrl(`offer?id=${body.id}`), body);
   }
 
-  getTransactions(
+  public getTransactions(
     page: number = 0,
     size: number = 8
   ): Observable<any> {
@@ -90,6 +90,10 @@ export class Rest extends Api {
       page: page,
       size: size
     });
+  }
+
+  public getUserInfo(): Observable<any> {
+    return this.get(this.parseUrl("admin/info"));
   }
 
 }

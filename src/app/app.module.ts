@@ -7,7 +7,8 @@ import {
   ErrorHandler,
   NgModule,
   CUSTOM_ELEMENTS_SCHEMA,
-  APP_INITIALIZER
+  APP_INITIALIZER,
+  NO_ERRORS_SCHEMA
 } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { Camera } from "@ionic-native/camera";
@@ -26,8 +27,8 @@ import {
   LoginProvider,
   Api,
   Rest,
-  User,
-  StompProvider
+  StompProvider,
+  UserProvider
 } from "../core/providers/providers";
 import { HttpInterceptorProvider } from "../core/providers/http-interceptor/http-interceptor";
 
@@ -84,7 +85,17 @@ export function initializer(initializeProvider: Initializer) {
         deps: [HttpClient]
       }
     }),
-    IonicModule.forRoot(YummyPlace),
+    IonicModule.forRoot(YummyPlace, {
+      dayNames: [
+        "Poniedzialek",
+        "Wtorek",
+        "Sroda",
+        "Czwartek",
+        "Piatek",
+        "Sobota",
+        "Niedziela"
+      ]
+    }),
     IonicStorageModule.forRoot(),
     StoreModule.forRoot(reducers),
     EffectsModule.forRoot([
@@ -110,7 +121,7 @@ export function initializer(initializeProvider: Initializer) {
   providers: [
     Api,
     Rest,
-    User,
+    UserProvider,
     OfferProvider,
     LoginProvider,
     PendingProvider,
@@ -141,6 +152,6 @@ export function initializer(initializeProvider: Initializer) {
       multi: true
     }
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA, NO_ERRORS_SCHEMA]
 })
 export class AppModule {}

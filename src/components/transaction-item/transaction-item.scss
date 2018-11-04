@@ -4,15 +4,14 @@ transaction-item {
   grid-template-areas: 
     'id id id buttonPrimary buttonSecondary'
     'orderDate receiveTime price buttonPrimary buttonSecondary';
-  grid-template-columns: 1fr 1fr 1fr $cntHeadHM * 1.2 $cntHeadHM * 1.2;
-  grid-template-rows: 1.2fr 0.8fr;
+  grid-template-columns: auto auto auto $cntHeadHM * 1.2 $cntHeadHM * 1.2;
   box-sizing: border-box;
   border-left-width: $cntHeadHM / 6;
   border-left-color: $lightGray;
   border-left-style: solid;
   background-color: $white;
   .item__id, .item__order-date, .item__receive-time, .item__price {
-    padding: $cntHeadHM / 8 $cntHeadHM / 4;
+    padding: $cntHeadHM / 8 0 $cntHeadHM / 8 $cntHeadHM / 8;
   }
   pending-container &.marked {
     border-left-color: $orange;
@@ -55,7 +54,7 @@ transaction-item {
   transaction-item {
     border-left-width: $cntHeadHT / 4;
     .item__id, .item__order-date, .item__receive-time, .item__price {
-      padding: $cntHeadHT / 8 $cntHeadHT / 4;
+      padding: $cntHeadHT / 8 0 $cntHeadHT / 8 $cntHeadHT / 8;
     }
     border-left-width: $cntHeadHT / 8;
     pending-container & {
@@ -77,7 +76,7 @@ transaction-item {
   transaction-item {
     border-left-width: $cntHeadHD / 4;
     .item__id, .item__order-date, .item__receive-time, .item__price {
-      padding: $cntHeadHD / 8 $cntHeadHD / 4;
+      padding: $cntHeadHD / 8 0 $cntHeadHD / 8 $cntHeadHD / 8;
     }
     border-left-width: $cntHeadHD / 8;
     pending-container & {

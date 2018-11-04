@@ -3,14 +3,14 @@
   ion-button
   icon-only
   outline
-  class="pending__close-button">
+  class="pending__close-button gray-color">
   <ion-icon name="close"></ion-icon>
 </button>
 
 <div
   class="pending__order">
   <span
-    class="order__label">
+    class="order__label bold">
     Numer zamówienia: {{ (pending$ | async)?.id }}
   </span>
   <div
@@ -45,16 +45,16 @@
   class="pending__summary">
   <div></div>
   <div
-    class="summary__count">
-    <span class="count__label">ilość</span> 
-    <span class="count__value">x</span>
+    class="summary__count dark-color">
+    <span class="count__label">ilość </span> 
+    <span class="count__value bold orange-color">x{{ allCount$ | async }}</span>
   </div>
   <div></div>
   <div></div>
   <div
-    class="summary__value">
-    <span class="value__label">suma</span> 
-    <span class="value__value">pln</span>
+    class="summary__value dark-color">
+    <span class="value__label">suma </span> 
+    <span class="value__value bold orange-color">{{ (pending$ | async)?.price | currency: 'PLN ' }}</span>
   </div>
   <div></div>
   <div></div>

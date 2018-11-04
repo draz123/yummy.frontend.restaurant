@@ -10,8 +10,8 @@
   </span>
   <span
     class="name__count">
-    <span class="count--label">ilość</span>
-    <span class="count--value bold">x {{ product?.count }}</span>
+    <span class="count--label">ilość </span>
+    <span class="count--value bold">x{{ product?.count }}</span>
   </span>
 </div>
 <div
@@ -23,7 +23,7 @@
     </span>
     <span
       class="discount__value">
-      <span class="bold">{{ product?.discount }}</span> %
+      <span class="bold">{{ product?.discount }}%</span>
     </span>
   </div>
   <div>
@@ -33,7 +33,7 @@
     </span>
     <span
       class="price__value">
-      <span class="bold">{{ product?.price }}</span> pln
+      <span class="bold">{{ product?.price | currency: 'PLN ' }}</span>
     </span>
   </div>
 </div>

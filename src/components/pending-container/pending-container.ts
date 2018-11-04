@@ -29,12 +29,6 @@ export class PendingContainerComponent {
     );
   }
 
-  public create(): void {
-    this.prov
-      .createPendings(1)
-      .subscribe(() => this.store.dispatch(new fromActions.FetchPendings({})));
-  }
-
   public complete(): void {
     this.pendings$
       .pipe(

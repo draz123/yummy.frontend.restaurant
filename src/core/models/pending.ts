@@ -1,20 +1,12 @@
-export class Pending {
-  constructor(
-    pending
-  ) {
-    Object.assign(this, pending);
-    this.isMarked = false;
-  }
+import { Transaction } from "./transaction";
 
-  public id: string;
-  public name: string;
-  public orderTime: string;
-  public receiveTime: string;
-  public paymentCode: string;
-  public price: number;
-  public isMarked?: boolean;
-  public state?: 'COMPLETED' | 'CANCELED';
-  public orderItemList?: PendingSingleItem[] ;
+export class Pending extends Transaction {
+  constructor(
+    pending: Pending
+  ) {
+    super(pending);
+    Object.assign(this, pending);
+  }
 }
 
 export interface PendingSingleItem {

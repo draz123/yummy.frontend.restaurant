@@ -14,7 +14,7 @@ export const offerFormReducer = (
   action: fromActions.OfferFormActions | any
 ) => {
   switch (action.type) {
-    case fromActions.UPDATE_FORM_SUCC:
+    case fromActions.UPDATE_FORM:
       return { 
         ...state, 
         data: {

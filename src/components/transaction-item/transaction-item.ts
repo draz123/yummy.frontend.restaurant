@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Pending } from '../../core/models/pending';
 import { Store } from '@ngrx/store';
 import { AppState } from '../../core/app-state';
 import * as fromPendingAction from "../../core/actions/pending.actions";
@@ -11,14 +10,14 @@ import { _ModalType } from '../../core/models/_modal';
   templateUrl: 'transaction-item.html'
 })
 export class TransactionItemComponent {
-
-  @Input() item: any;
+  @Input() 
+  public item: any;
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit() {}
 
-  openItem(id: string): void {
+  public openItem(id: string): void {
     this.store.dispatch(new fromModalAction.Show({
       mode: _ModalType.PENDING,
       meta: {
@@ -27,7 +26,7 @@ export class TransactionItemComponent {
     }));
   }
 
-  markItem(id: string): void {
+  public markItem(id: string): void {
     this.store.dispatch(new fromPendingAction.MarkPending({ id: id }));
   }
 
