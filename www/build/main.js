@@ -1186,13 +1186,15 @@ var OfferModalComponent = (function () {
         Object.keys(tempForm).map(function (key, index) {
             tempForm[key] = ["", __WEBPACK_IMPORTED_MODULE_8__angular_forms__["g" /* Validators */].required];
         });
-        tempForm['discountMetric'] = ["PERCENTAGE", __WEBPACK_IMPORTED_MODULE_8__angular_forms__["g" /* Validators */].required];
+        tempForm["discountMetric"] = ["PERCENTAGE", __WEBPACK_IMPORTED_MODULE_8__angular_forms__["g" /* Validators */].required];
         this.form = this.formBuilder.group(tempForm);
         this.subscribeDiscount();
         this.connectOffer().then(function (offer) {
-            var id = offer.id, restaurantId = offer.restaurantId, image = offer.image, receiveTimeEnd = offer.receiveTimeEnd, receiveTimeStart = offer.receiveTimeStart, state = offer.state, rest = __rest(offer, ["id", "restaurantId", "image", "receiveTimeEnd", "receiveTimeStart", "state"]);
-            offer && _this.form.setValue(__assign({}, _this.form.value, rest));
-            offer && offer.image && _this.setImage(offer.image);
+            if (offer) {
+                var id = offer.id, restaurantId = offer.restaurantId, image = offer.image, receiveTimeEnd = offer.receiveTimeEnd, receiveTimeStart = offer.receiveTimeStart, state = offer.state, rest = __rest(offer, ["id", "restaurantId", "image", "receiveTimeEnd", "receiveTimeStart", "state"]);
+                _this.form.setValue(__assign({}, _this.form.value, rest));
+                offer.image && _this.setImage(offer.image);
+            }
             _this.form$ = _this.store.select(function (state) { return state.offerForm.data; });
         });
     };
@@ -1227,7 +1229,7 @@ var OfferModalComponent = (function () {
     OfferModalComponent.prototype.handleDiscount = function (_a, sub) {
         var discount = _a.discount, price = _a.price, discountMetric = _a.discountMetric;
         sub.unsubscribe();
-        this.form.setValue(__assign({}, this.form.value, { calculatedPrice: (discountMetric === "PERCENTAGE")
+        this.form.setValue(__assign({}, this.form.value, { calculatedPrice: discountMetric === "PERCENTAGE"
                 ? Math.round((price * (100 - discount)) / 10) / 10
                 : price - discount }));
         this.subscribeDiscount();

@@ -62,16 +62,27 @@ export class OfferModalComponent {
     Object.keys(tempForm).map(function(key, index) {
       tempForm[key] = ["", Validators.required];
     });
-    tempForm['discountMetric'] = ["PERCENTAGE", Validators.required];
+    tempForm["discountMetric"] = ["PERCENTAGE", Validators.required];
     this.form = this.formBuilder.group(tempForm);
     this.subscribeDiscount();
     this.connectOffer().then((offer: Offer) => {
-      const { id, restaurantId, image, receiveTimeEnd, receiveTimeStart, state, ...rest } = offer;
-      offer && this.form.setValue({
-        ...this.form.value,
-        ...rest
-      });
-      offer && offer.image && this.setImage(offer.image);
+      if (offer) {
+        const {
+          id,
+          restaurantId,
+          image,
+          receiveTimeEnd,
+          receiveTimeStart,
+          state,
+          ...rest
+        } = offer;
+
+        this.form.setValue({
+          ...this.form.value,
+          ...rest
+        });
+        offer.image && this.setImage(offer.image);
+      }
       this.form$ = this.store.select((state) => state.offerForm.data);
     });
   }
@@ -108,13 +119,17 @@ export class OfferModalComponent {
     });
   }
 
-  private handleDiscount({ discount, price, discountMetric }, sub: Subscription): void {
+  private handleDiscount(
+    { discount, price, discountMetric },
+    sub: Subscription
+  ): void {
     sub.unsubscribe();
     this.form.setValue({
       ...this.form.value,
-      calculatedPrice:  (discountMetric === "PERCENTAGE")
-        ? Math.round((price * (100 - discount)) / 10) / 10
-        : price - discount
+      calculatedPrice:
+        discountMetric === "PERCENTAGE"
+          ? Math.round((price * (100 - discount)) / 10) / 10
+          : price - discount
     });
     this.subscribeDiscount();
   }
@@ -139,7 +154,7 @@ export class OfferModalComponent {
   }
 
   public close(): void {
-    this.store.dispatch(new fromActions.UpdateForm(new Offer()))
+    this.store.dispatch(new fromActions.UpdateForm(new Offer()));
     this.store.dispatch(new fromModalActions.Hide());
   }
 }
