@@ -1,5 +1,5 @@
 export const AppConfig = {
   rest: {
-    rootUrl: 'http://yummy-backend.herokuapp.com/yummy/api'
+    rootUrl: 'https://yummy-backend.herokuapp.com/yummy/api'
   }
 }
