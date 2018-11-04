@@ -62,6 +62,21 @@
 
 @font-face {
   font-family: "Ubuntu";
+  src: url("../assets/fonts/ubuntu/Ubuntu-R.ttf");
+}
+
+@font-face {
+  font-family: "UbuntuBold";
+  src: url("../assets/fonts/ubuntu/Ubuntu-B.ttf");
+}
+
+@font-face {
+  font-family: "UbuntuItalic";
+  src: url("../assets/fonts/ubuntu/Ubuntu-RI.ttf");
+}
+
+@font-face {
+  font-family: "UbuntuLight";
   src: url("../assets/fonts/ubuntu/Ubuntu-L.ttf");
 }
 
@@ -25807,6 +25822,346 @@ ion-content.content {
   border: 0;
 }
 
+pagination-controls .ngx-pagination {
+  padding: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+pagination-controls.orange li.current {
+  background: #f3702b;
+}
+
+pagination-controls.gray li.current {
+  background: #999999;
+}
+
+pagination-controls.blue li.current {
+  background: #5a89fc;
+}
+
+.yummy__form {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  -webkit-align-content: start;
+  -ms-flex-line-pack: start;
+  align-content: start;
+  padding: 16.66667px 16.66667px 0 16.66667px;
+  grid-gap: 8.33333px;
+  grid-template-columns: auto 1fr 1fr auto;
+}
+
+.yummy__form .yummy__field {
+  grid-column: 2/4;
+}
+
+.yummy__form .yummy__field.long {
+  grid-column: 2/5;
+}
+
+.yummy__form .yummy__field .item-inner {
+  border-width: 0;
+  -webkit-box-shadow: 0 0 0 0 !important;
+  box-shadow: 0 0 0 0 !important;
+}
+
+.yummy__form .yummy__field .field__datetime {
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  border-bottom: 2px solid #cbcbcb;
+  padding: 13px 8px 13px 8px;
+}
+
+.yummy__form .yummy__field .field__datetime.first {
+  margin-right: 8.33333px;
+}
+
+.yummy__form .yummy__field .field__datetime.first .item-cover {
+  left: 0;
+}
+
+.yummy__form .yummy__field .field__datetime .item-cover {
+  left: 50%;
+  width: 50%;
+}
+
+.yummy__form .yummy__input {
+  border-bottom: 2px solid #cbcbcb;
+}
+
+.yummy__form .yummy__currency {
+  color: #999999;
+  border-bottom: 2px solid #cbcbcb;
+  position: relative;
+}
+
+.yummy__form .currency__label {
+  position: relative;
+  margin: 13px 8px;
+}
+
+.yummy__form .currency__select {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 5;
+}
+
+.yummy__form .yummy__thumbnail {
+  grid-column: 1/5;
+  grid-row: 2/3;
+  position: relative;
+  justify-self: center;
+  width: 200px;
+  min-height: 100px;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+}
+
+.yummy__form .thumbnail__add {
+  background: #999999;
+  height: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  color: #fffffe;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+}
+
+.yummy__form .add__label {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  height: 30px;
+  bottom: 0;
+  width: 100%;
+  background: #5a89fc;
+  opacity: 0.7;
+  color: #fffffe;
+}
+
+.yummy__form .thumbnail__input {
+  cursor: pointer;
+  opacity: 0;
+  position: absolute;
+  -webkit-box-flex: 1;
+  -webkit-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  height: 30px;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.yummy__form .thumbnail__clear {
+  cursor: pointer;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #5a89fc;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  opacity: 0.7;
+  z-index: 3;
+  color: #fffffe;
+}
+
+.yummy__form .yummy__meta {
+  grid-column: 2/4;
+  padding: 0 16.66667px;
+}
+
+.yummy__form .yummy__desc {
+  min-height: 100px;
+}
+
+.yummy__form .yummy__desc .yummy__input {
+  margin: 4px 8px;
+}
+
+.yummy__form .yummy__label {
+  grid-column: 1/2;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  text-align: right;
+  color: #999999;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+}
+
+.yummy__form .yummy__buttons-bar {
+  grid-column: 3/5;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: end;
+  -webkit-justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button {
+  height: 100%;
+  width: 100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  border-left: 2px solid #f2f2f2;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element {
+  border: 0;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element.close {
+  opacity: 1;
+  color: #e73848;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element.close .button-effect {
+  background-color: #e73848;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element.close.activated {
+  background-color: #e73848;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element.close.activated * {
+  color: #fffffe;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element.add {
+  color: #5a89fc;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element.add .button-effect {
+  background-color: #5a89fc;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element.add.activated {
+  background-color: #5a89fc;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element.add.activated * {
+  color: #fffffe;
+}
+
+.yummy__form .yummy__buttons-bar .yummy__button .button__element * {
+  font-size: 2.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  .yummy__form {
+    padding: 16.25px 16.25px 0 16.25px;
+    grid-gap: 8.125px;
+    -webkit-align-content: space-between;
+    -ms-flex-line-pack: justify;
+    align-content: space-between;
+  }
+  .yummy__form .yummy__thumbnail {
+    grid-column: initial;
+    grid-row: 1/4;
+    width: 250px;
+    min-height: 125px;
+  }
+  .yummy__form .yummy__meta {
+    padding-left: 8.125px;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .yummy__form {
+    padding: 20px 20px 0 20px;
+    grid-gap: 8.125px;
+  }
+  .yummy__form .yummy__meta {
+    padding-left: 10px;
+  }
+}
+
 .modal-wrapper {
   border-radius: 2px;
   overflow: hidden;
@@ -25815,12 +26170,23 @@ ion-content.content {
 }
 
 div, span, h1, h2, h3, h4, h5, h6 {
-  font-family: 'Ubuntu' !important;
-  font-weight: 100;
+  font-family: 'Ubuntu';
 }
 
-.darkGray {
+.gray-color {
   color: #999999;
+}
+
+.orange-color {
+  color: #f3702b;
+}
+
+.red-color {
+  color: #e73848;
+}
+
+.blue-color {
+  color: #5a89fc;
 }
 
 .right {
@@ -25832,11 +26198,11 @@ div, span, h1, h2, h3, h4, h5, h6 {
 }
 
 .italic {
-  font-style: italic;
+  font-family: 'UbuntuItalic' !important;
 }
 
 .bold {
-  font-weight: 900;
+  font-family: 'UbuntuBold' !important;
 }
 
 .small {
@@ -25849,6 +26215,22 @@ div, span, h1, h2, h3, h4, h5, h6 {
 
 .large {
   font-size: 1.8rem;
+}
+
+.ellipsis-3 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+
+.ellipsis-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .centered-icon {
@@ -25979,6 +26361,7 @@ ion-loading .loading-wrapper circle {
     transform: translate3d(0, 0, 0);
     -webkit-transform: translateX(0) !important;
     transform: translateX(0) !important;
+    border-right: 1px solid #cbcbcb;
   }
   .menu-inner > ion-header {
     position: relative;
@@ -26235,6 +26618,7 @@ offer-modal {
   width: 100%;
   height: 100%;
   background: #fffffe;
+  overflow-y: scroll;
 }
 
 offer-modal .text-input {
@@ -26265,168 +26649,6 @@ offer-modal .offer__close-button.activated * {
 offer-modal .offer__close-button * {
   font-size: 2.5rem;
   color: #cbcbcb;
-}
-
-offer-modal .offer__form {
-  width: 100%;
-  height: 100%;
-  display: grid;
-  -webkit-align-content: start;
-  -ms-flex-line-pack: start;
-  align-content: start;
-  padding: 16.66667px 16.66667px 0 16.66667px;
-  grid-gap: 8.33333px;
-  grid-template-columns: auto 1fr 1fr;
-}
-
-offer-modal .offer__form .offer__field {
-  grid-column: 2/4;
-  padding-right: 16.66667px;
-}
-
-offer-modal .offer__form .offer__field .item-inner {
-  border-bottom-color: #cbcbcb !important;
-  border-bottom-width: 2px;
-  -webkit-box-shadow: initial !important;
-  box-shadow: initial !important;
-}
-
-offer-modal .offer__form .offer__thumbnail {
-  max-width: 100px;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-offer-modal .offer__form .offer__meta {
-  grid-column: 2/4;
-  padding: 0 8.33333px;
-}
-
-offer-modal .offer__form .offer__desc .offer__input {
-  margin: 4px 8px;
-}
-
-offer-modal .offer__form .offer__label {
-  grid-column: 1/2;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  text-align: right;
-  color: #999999;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-offer-modal .offer__form .offer__buttons-bar {
-  grid-column: 3/4;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button {
-  height: 100%;
-  width: 100%;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  border-left: 2px solid #f2f2f2;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element {
-  border: 0;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element.close {
-  opacity: 1;
-  color: #e73848;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element.close .button-effect {
-  background-color: #e73848;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element.close.activated {
-  background-color: #e73848;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element.close.activated * {
-  color: #fffffe;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element.add {
-  color: #5a89fc;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element.add .button-effect {
-  background-color: #5a89fc;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element.add.activated {
-  background-color: #5a89fc;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element.add.activated * {
-  color: #fffffe;
-}
-
-offer-modal .offer__form .offer__buttons-bar .offer__button .button__element * {
-  font-size: 2.5rem;
-}
-
-@media screen and (min-width: 768px) {
-  offer-modal .offer__form {
-    padding: 16.25px 16.25px 0 16.25px;
-    grid-gap: 8.125px;
-    -webkit-align-content: space-between;
-    -ms-flex-line-pack: justify;
-    align-content: space-between;
-  }
-  offer-modal .offer__form .offer__thumbnail {
-    max-width: 200px;
-    max-height: 100px;
-  }
-  offer-modal .offer__form .offer__meta {
-    padding-left: 8.125px;
-  }
-}
-
-@media screen and (min-width: 1900px) {
-  offer-modal .offer__form {
-    padding: 20px 20px 0 20px;
-    grid-gap: 8.125px;
-  }
-  offer-modal .offer__form .offer__meta {
-    padding-left: 10px;
-  }
 }
 
 offers-container {
@@ -26663,12 +26885,42 @@ pending-list .spinner > svg > circle {
   stroke: #f3702b;
 }
 
+pending-list .list__item {
+  margin-bottom: 6.25px;
+}
+
+pending-list .spinner {
+  width: 100%;
+  margin: 25px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
 @media screen and (min-width: 768px) {
   pending-list {
     width: calc(100% - $cntHeadHT / 4);
     height: calc(100% - $cntHeadHT / 4);
     margin-left: 16.25px;
     margin-bottom: 16.25px;
+  }
+  pending-list .list__item {
+    margin-bottom: 8.125px;
+  }
+  pending-list .spinner {
+    width: 100%;
+    margin: 32.5px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
   }
 }
 
@@ -26678,6 +26930,20 @@ pending-list .spinner > svg > circle {
     height: calc(100% - $cntHeadHD / 4);
     margin-left: 20px;
     margin-bottom: 20px;
+  }
+  pending-list .list__item {
+    margin-bottom: 10px;
+  }
+  pending-list .spinner {
+    width: 100%;
+    margin: 40px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
   }
 }
 
@@ -26698,7 +26964,6 @@ pending-modal .pending__close-button {
   top: 6.25px;
   right: 6.25px;
   border: 0;
-  color: #cbcbcb;
 }
 
 pending-modal .pending__close-button .button-effect {
@@ -26748,10 +27013,6 @@ pending-modal .pending__id, pending-modal .pending__order {
 
 pending-modal .pending__summary {
   padding: 16.66667px 8.33333px 0 8.33333px;
-}
-
-pending-modal .order__label {
-  font-weight: 900;
 }
 
 pending-modal .order__date {
@@ -27135,8 +27396,7 @@ transaction-item {
   width: 100%;
   display: grid;
   grid-template-areas: 'id id id buttonPrimary buttonSecondary' 'orderDate receiveTime price buttonPrimary buttonSecondary';
-  grid-template-columns: 1fr 1fr 1fr 60px 60px;
-  grid-template-rows: 1.2fr 0.8fr;
+  grid-template-columns: auto auto auto 60px 60px;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   border-left-width: 8.33333px;
@@ -27146,7 +27406,7 @@ transaction-item {
 }
 
 transaction-item .item__id, transaction-item .item__order-date, transaction-item .item__receive-time, transaction-item .item__price {
-  padding: 6.25px 12.5px;
+  padding: 6.25px 0 6.25px 6.25px;
 }
 
 pending-container transaction-item.marked {
@@ -27197,7 +27457,7 @@ transaction-item .button-secondary {
     border-left-width: 8.125px;
   }
   transaction-item .item__id, transaction-item .item__order-date, transaction-item .item__receive-time, transaction-item .item__price {
-    padding: 8.125px 16.25px;
+    padding: 8.125px 0 8.125px 8.125px;
   }
   pending-container transaction-item {
     grid-template-columns: 1fr 1fr 1fr 65px 65px;
@@ -27219,7 +27479,7 @@ transaction-item .button-secondary {
     border-left-width: 10px;
   }
   transaction-item .item__id, transaction-item .item__order-date, transaction-item .item__receive-time, transaction-item .item__price {
-    padding: 10px 20px;
+    padding: 10px 0 10px 10px;
   }
   pending-container transaction-item {
     grid-template-columns: 1fr 1fr 1fr 66.66667px 66.66667px;
@@ -27257,12 +27517,42 @@ transactions-list .spinner > svg > circle {
   stroke: #999999;
 }
 
+transactions-list .list__item {
+  margin-bottom: 6.25px;
+}
+
+transactions-list .spinner {
+  width: 100%;
+  margin: 25px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-content: center;
+  -ms-flex-line-pack: center;
+  align-content: center;
+}
+
 @media screen and (min-width: 768px) {
   transactions-list {
     width: calc(100% - $cntHeadHT / 4);
     height: calc(100% - $cntHeadHT / 4);
     margin-left: 16.25px;
     margin-bottom: 16.25px;
+  }
+  transactions-list .list__item {
+    margin-bottom: 8.125px;
+  }
+  transactions-list .spinner {
+    width: 100%;
+    margin: 32.5px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
   }
 }
 
@@ -27272,6 +27562,20 @@ transactions-list .spinner > svg > circle {
     height: calc(100% - $cntHeadHD / 4);
     margin-left: 20px;
     margin-bottom: 20px;
+  }
+  transactions-list .list__item {
+    margin-bottom: 10px;
+  }
+  transactions-list .spinner {
+    width: 100%;
+    margin: 40px;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-content: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
   }
 }
 
