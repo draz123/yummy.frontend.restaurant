@@ -36,6 +36,18 @@ export class OfferEffects {
   );
 
   @Effect()
+  public getOffers$ = this.actions$
+    .ofType(fromActions.FETCH_OFFERS)
+    .pipe(
+      switchMap(() => this.offerProvider.getOffers()),
+      map((res: any | HttpErrorResponse) => {
+        return (!(res instanceof HttpErrorResponse) && res.offers)
+          ? new fromActions.FetchOffersSucc(res.offers)
+          : new fromActions.FetchOffersFail;
+      })
+    );
+
+  @Effect()
   public updateOffer$ = this.actions$.ofType(fromActions.UPDATE_OFFER).pipe(
     pluck("payload"),
     tap((payload: Offer) =>

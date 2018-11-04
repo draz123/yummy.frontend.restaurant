@@ -44,11 +44,13 @@ export class OfferModalComponent {
       });
     };
     getBase64(file)
-      .then((base64: string) => {
-        this.isImage = true;
-        this.image.nativeElement.src = base64;
-      })
+      .then(this.setImage)
       .catch(() => this.clearImage());
+  }
+
+  public setImage(src: string): void {
+    this.isImage = true;
+    this.image.nativeElement.src = src;
   }
 
   public clearImage(): void {
@@ -63,12 +65,18 @@ export class OfferModalComponent {
     tempForm['discountMetric'] = ["PERCENTAGE", Validators.required];
     this.form = this.formBuilder.group(tempForm);
     this.subscribeDiscount();
-    this.connectOffer().then(() => {
+    this.connectOffer().then((offer: Offer) => {
+      const { id, restaurantId, image, receiveTimeEnd, receiveTimeStart, state, ...rest } = offer;
+      offer && this.form.setValue({
+        ...this.form.value,
+        ...rest
+      });
+      offer && offer.image && this.setImage(offer.image);
       this.form$ = this.store.select((state) => state.offerForm.data);
     });
   }
 
-  private connectOffer(): Promise<void> {
+  private connectOffer(): Promise<Offer> {
     return new Promise((resolve) => {
       if (this.navParams.get("id")) {
         this.store
@@ -85,7 +93,7 @@ export class OfferModalComponent {
           )
           .subscribe((offer: Offer) => {
             this.store.dispatch(new fromActions.UpdateForm([offer, offer]));
-            resolve();
+            resolve(offer);
           });
       } else {
         resolve();

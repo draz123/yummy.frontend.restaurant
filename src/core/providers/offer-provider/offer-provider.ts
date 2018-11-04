@@ -9,7 +9,7 @@ import { format } from "date-fns";
 
 @Injectable()
 export class OfferProvider {
-  private offers$: BehaviorSubject<Offer[]>;
+  public offers$: BehaviorSubject<Offer[]>;
 
   constructor(private rest: Rest) {
     this.offers$ = new BehaviorSubject<Offer[]>([]);

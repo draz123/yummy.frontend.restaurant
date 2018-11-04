@@ -17,6 +17,7 @@ export class Offer {
   public receiveTimeEnd?: number;
   public startDate?: string = "";
   public endDate?: string = "";
+  public state?: string;
 }
 
 export enum DiscountMetric {

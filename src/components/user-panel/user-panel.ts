@@ -15,7 +15,7 @@ export class UserPanelComponent {
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.user$ = this.store.select((state) => state.user.data).pipe(tap((res) => console.log(res)));
+    this.user$ = this.store.select((state) => state.user.data);
   }
 
 }

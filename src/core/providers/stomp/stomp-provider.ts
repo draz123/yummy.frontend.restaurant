@@ -1,19 +1,14 @@
 import { Observable } from "rxjs";
 import { Injectable } from "@angular/core";
 import SockJS from "sockjs-client";
-import Stomp from "@stomp/stompjs";
+import Stomp, { Frame } from "@stomp/stompjs";
+import { AppConfig } from "../../../app/app.config";
 
 declare let sessionStorage: Storage;
 
 @Injectable()
 export class StompProvider {
   constructor() {}
-
-  socketProvider() {
-    return new SockJS(
-      "https://yummy-backend.herokuapp.com/yummy/api/restaurant-panel"
-    );
-  }
 
   public connectSockets<T>(endpoint: string): Observable<T> {
     return Observable.create((observer) => {
@@ -24,17 +19,19 @@ export class StompProvider {
           Authorization: sessionStorage.__th,
           Email: sessionStorage.__mail
         },
-        (frame) => {
-          console.log("Connected: " + frame);
+        () =>
           stompClient.subscribe(
             "/topic/restaurant/" + sessionStorage.__mail,
-            (greeting) => {
-              console.log("bump from socket", greeting);
-              observer.next(greeting);
+            (data: Frame) => {
+              console.log('ws data', JSON.parse(data.body));
+              observer.next(JSON.parse(data.body));
             }
-          );
-        }
+          )
       );
     });
+  }
+
+  private socketProvider() {
+    return new SockJS(`${AppConfig.rest.rootUrl}/restaurant-panel`);
   }
 }
