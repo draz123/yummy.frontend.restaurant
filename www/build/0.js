@@ -1,6 +1,6 @@
 webpackJsonp([0],{
 
-/***/ 781:
+/***/ 782:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -9,8 +9,8 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ngx_translate_core__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__welcome__ = __webpack_require__(810);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(782);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__welcome__ = __webpack_require__(811);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_components_module__ = __webpack_require__(783);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -47,36 +47,36 @@ var WelcomePageModule = (function () {
 
 /***/ }),
 
-/***/ 782:
+/***/ 783:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ComponentsModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__login_form_login_form__ = __webpack_require__(783);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__directives_directives_module__ = __webpack_require__(784);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__login_form_login_form__ = __webpack_require__(784);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__directives_directives_module__ = __webpack_require__(785);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_forms__ = __webpack_require__(30);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ngx_translate_core__ = __webpack_require__(207);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ionic_angular__ = __webpack_require__(69);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__transactions_container_transactions_container__ = __webpack_require__(786);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pending_container_pending_container__ = __webpack_require__(787);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__offers_container_offers_container__ = __webpack_require__(788);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__offers_container_offers_list_offers_item_offers_item__ = __webpack_require__(789);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__summary_container_summary_container__ = __webpack_require__(790);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__container_header_container_header__ = __webpack_require__(791);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__container_subheader_container_subheader__ = __webpack_require__(792);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__summary_container_summary_card_summary_card__ = __webpack_require__(793);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__summary_container_summary_card_summary_chart_summary_chart__ = __webpack_require__(794);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__summary_container_summary_card_summary_takings_summary_takings__ = __webpack_require__(795);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__summary_container_summary_card_summary_takings_summary_single_taking_summary_single_taking__ = __webpack_require__(796);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pending_container_pending_list_pending_list__ = __webpack_require__(798);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__offers_container_offers_list_offers_list__ = __webpack_require__(799);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__transactions_container_transactions_list_transactions_list__ = __webpack_require__(800);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__transaction_item_transaction_item__ = __webpack_require__(801);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__yummy_list_yummy_list__ = __webpack_require__(802);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__yummy_button_yummy_button__ = __webpack_require__(803);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__support_modal_support_modal__ = __webpack_require__(804);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__media_modal_media_modal__ = __webpack_require__(805);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__transactions_container_transactions_container__ = __webpack_require__(787);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__pending_container_pending_container__ = __webpack_require__(788);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__offers_container_offers_container__ = __webpack_require__(789);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__offers_container_offers_list_offers_item_offers_item__ = __webpack_require__(790);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__summary_container_summary_container__ = __webpack_require__(791);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__container_header_container_header__ = __webpack_require__(792);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__container_subheader_container_subheader__ = __webpack_require__(793);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__summary_container_summary_card_summary_card__ = __webpack_require__(794);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__summary_container_summary_card_summary_chart_summary_chart__ = __webpack_require__(795);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__summary_container_summary_card_summary_takings_summary_takings__ = __webpack_require__(796);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__summary_container_summary_card_summary_takings_summary_single_taking_summary_single_taking__ = __webpack_require__(797);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__pending_container_pending_list_pending_list__ = __webpack_require__(799);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__offers_container_offers_list_offers_list__ = __webpack_require__(800);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__transactions_container_transactions_list_transactions_list__ = __webpack_require__(801);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__transaction_item_transaction_item__ = __webpack_require__(802);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__yummy_list_yummy_list__ = __webpack_require__(803);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_22__yummy_button_yummy_button__ = __webpack_require__(804);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_23__support_modal_support_modal__ = __webpack_require__(805);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_24__media_modal_media_modal__ = __webpack_require__(806);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_25_ngx_pagination__ = __webpack_require__(399);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -175,7 +175,7 @@ var ComponentsModule = (function () {
 
 /***/ }),
 
-/***/ 783:
+/***/ 784:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -244,13 +244,13 @@ var LoginFormComponent = (function () {
 
 /***/ }),
 
-/***/ 784:
+/***/ 785:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DirectivesModule; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__connect_form_connect_form__ = __webpack_require__(785);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__connect_form_connect_form__ = __webpack_require__(786);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -276,7 +276,7 @@ var DirectivesModule = (function () {
 
 /***/ }),
 
-/***/ 785:
+/***/ 786:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -327,7 +327,7 @@ var ConnectFormDirective = (function () {
 
 /***/ }),
 
-/***/ 786:
+/***/ 787:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -363,12 +363,12 @@ var TransactionsContainerComponent = (function () {
 
 /***/ }),
 
-/***/ 787:
+/***/ 788:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return PendingContainerComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ngrx_store__ = __webpack_require__(25);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__core_actions_pending_actions__ = __webpack_require__(123);
@@ -442,7 +442,7 @@ var PendingContainerComponent = (function () {
 
 /***/ }),
 
-/***/ 788:
+/***/ 789:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -496,7 +496,7 @@ var OffersContainerComponent = (function () {
 
 /***/ }),
 
-/***/ 789:
+/***/ 790:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -554,7 +554,7 @@ var OffersItemComponent = (function () {
     ], OffersItemComponent.prototype, "item", void 0);
     OffersItemComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["n" /* Component */])({
-            selector: 'offers-item',template:/*ion-inline-start:"/Users/radoslawwarisch/WebstormProjects/yummyPlaceFront/src/components/offers-container/offers-list/offers-item/offers-item.html"*/'<div\n  class="item__thumbnail">\n  <img [src]="item?.image" />\n</div>\n<div\n  class="item__label bold">\n  {{ item?.description || \'-\' }}\n  {{ item?.type || \'-\' }}\n</div>\n<div\n  class="item__details">\n  <span\n    class="details__label">\n    ilość\n  </span>\n  <span\n    class="details__value bold">\n    {{ \'x\' + item?.count || \'-\' }}\n  </span>\n</div>\n<span\n  class="item__value">\n  <span class="bold">{{ item?.calculatedPrice + \' pln\'}}</span> ({{ \'-\' + item?.discount + \'%\'}})\n</span>\n<div\n  class="item__count-buttons">\n  <button\n    (click)="increaseCount(item)"\n    class="count-button"\n    ion-button\n    block\n    outline>\n    <ion-icon\n      name="add">\n    </ion-icon>\n  </button>\n  <button\n    (click)="decreaseCount(item)"\n    class="count-button"\n    ion-button\n    block\n    outline>\n    <ion-icon\n      name="remove">\n    </ion-icon>\n  </button>\n</div>\n<yummy-button\n  (buttonClick)="openItem(item.id)"\n  [icon]="\'go\'"\n  class="button-primary">\n</yummy-button>'/*ion-inline-end:"/Users/radoslawwarisch/WebstormProjects/yummyPlaceFront/src/components/offers-container/offers-list/offers-item/offers-item.html"*/,
+            selector: 'offers-item',template:/*ion-inline-start:"/Users/radoslawwarisch/WebstormProjects/yummyPlaceFront/src/components/offers-container/offers-list/offers-item/offers-item.html"*/'<div\n  class="item__thumbnail">\n  <img [src]="item?.image" />\n</div>\n<div\n  class="item__label">\n  <span class="bold">{{ item?.name }}</span>\n  <!-- <br>\n  <span class="small">{{ item?.description || \'-\' }}</span> -->\n</div>\n<div\n  class="item__details">\n  <span\n    class="details__label">\n    ilość\n  </span>\n  <span\n    class="details__value bold">\n    {{ \'x\' + item?.count || \'-\' }}\n  </span>\n</div>\n<span\n  class="item__value">\n  <span class="bold">{{ item?.calculatedPrice + \' pln\'}}</span> ({{ \'-\' + item?.discount + \'%\'}})\n</span>\n<div\n  class="item__count-buttons">\n  <button\n    (click)="increaseCount(item)"\n    class="count-button"\n    ion-button\n    block\n    outline>\n    <ion-icon\n      name="add">\n    </ion-icon>\n  </button>\n  <button\n    (click)="decreaseCount(item)"\n    class="count-button"\n    ion-button\n    block\n    outline>\n    <ion-icon\n      name="remove">\n    </ion-icon>\n  </button>\n</div>\n<yummy-button\n  (buttonClick)="openItem(item.id)"\n  [icon]="\'go\'"\n  class="button-primary">\n</yummy-button>'/*ion-inline-end:"/Users/radoslawwarisch/WebstormProjects/yummyPlaceFront/src/components/offers-container/offers-list/offers-item/offers-item.html"*/,
             changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["j" /* ChangeDetectionStrategy */].OnPush
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_2__ngrx_store__["b" /* Store */]])
@@ -566,7 +566,7 @@ var OffersItemComponent = (function () {
 
 /***/ }),
 
-/***/ 790:
+/***/ 791:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -603,7 +603,7 @@ var SummaryContainerComponent = (function () {
 
 /***/ }),
 
-/***/ 791:
+/***/ 792:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -641,7 +641,7 @@ var ContainerHeaderComponent = (function () {
 
 /***/ }),
 
-/***/ 792:
+/***/ 793:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -684,7 +684,7 @@ var ContainerSubheaderComponent = (function () {
 
 /***/ }),
 
-/***/ 793:
+/***/ 794:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -725,12 +725,12 @@ var SummaryCardComponent = (function () {
 
 /***/ }),
 
-/***/ 794:
+/***/ 795:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SummaryChartComponent; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_rxjs_operators__ = __webpack_require__(7);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs__ = __webpack_require__(17);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -773,7 +773,7 @@ var SummaryChartComponent = (function () {
 
 /***/ }),
 
-/***/ 795:
+/***/ 796:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -812,13 +812,13 @@ var SummaryTakingsComponent = (function () {
 
 /***/ }),
 
-/***/ 796:
+/***/ 797:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SummarySingleTakingComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_models_takings__ = __webpack_require__(797);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_models_takings__ = __webpack_require__(798);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -850,7 +850,7 @@ var SummarySingleTakingComponent = (function () {
 
 /***/ }),
 
-/***/ 797:
+/***/ 798:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -866,7 +866,7 @@ var Takings = (function () {
 
 /***/ }),
 
-/***/ 798:
+/***/ 799:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -912,7 +912,7 @@ var PendingListComponent = (function () {
 
 /***/ }),
 
-/***/ 799:
+/***/ 800:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -958,7 +958,7 @@ var OffersListComponent = (function () {
 
 /***/ }),
 
-/***/ 800:
+/***/ 801:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1004,7 +1004,7 @@ var TransactionsListComponent = (function () {
 
 /***/ }),
 
-/***/ 801:
+/***/ 802:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1061,7 +1061,7 @@ var TransactionItemComponent = (function () {
 
 /***/ }),
 
-/***/ 802:
+/***/ 803:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1112,7 +1112,7 @@ var YummyListComponent = (function () {
 
 /***/ }),
 
-/***/ 803:
+/***/ 804:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1154,7 +1154,7 @@ var YummyButtonComponent = (function () {
 
 /***/ }),
 
-/***/ 804:
+/***/ 805:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1194,7 +1194,7 @@ var SupportModalComponent = (function () {
 
 /***/ }),
 
-/***/ 805:
+/***/ 806:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -1234,7 +1234,7 @@ var MediaModalComponent = (function () {
 
 /***/ }),
 
-/***/ 810:
+/***/ 811:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

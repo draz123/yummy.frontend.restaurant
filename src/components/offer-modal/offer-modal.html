@@ -44,11 +44,11 @@
   <div
     class="yummy__meta">
     <span class="meta__name medium bold">
-      {{ (form$ | async)?.name || "Nowy Produkt" }}
+      {{ form?.value?.id ? form?.value?.name : "Nowy Produkt" }}
     </span>
     <br>
-    <span class="meta__id small" *ngIf="(form$ | async)?.id">
-      {{ (form$ | async)?.id }}
+    <span class="meta__id small" *ngIf="form?.value?.id">
+      {{ form?.value?.id }}
     </span>
     <br>
   </div>
@@ -186,7 +186,7 @@
       </button>
     </div>
     <div
-      *ngIf="(form$ | async)?.id"
+      *ngIf="form?.value?.id"
       (click)="delete()"
       class="yummy__button">
       <span class="button__label">usuń</span>

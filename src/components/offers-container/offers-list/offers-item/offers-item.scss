@@ -33,7 +33,7 @@ offers-item {
     font-size: $fontSmallM;
   }
   .item__label {
-    overflow: visible;
+    //overflow: visible;
     grid-area: label;
     padding: $cntHeadHM / 8 $cntHeadHM / 8 0 $cntHeadHM / 8;
     line-height: $cntHeadHM * 1.6 / 6;

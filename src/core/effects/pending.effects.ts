@@ -9,13 +9,15 @@ import * as fromLoaderActions from "../actions/_loader.actions";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Store } from "@ngrx/store";
 import { AppState } from "../app-state";
+import { AnalyticsProvider } from '../providers/providers';
 
 @Injectable()
 export class PendingEffects {
   constructor(
     private actions$: Actions,
     private store: Store<AppState>,
-    private pendingProvider: PendingProvider
+    private pendingProvider: PendingProvider,
+    private analytics: AnalyticsProvider
   ) {}
 
   @Effect()
@@ -41,6 +43,10 @@ export class PendingEffects {
         this.store.dispatch(new fromTransactionActions.FetchTransactions({}))
       } 
     }),
+    tap((res: any | HttpErrorResponse) => !(res instanceof HttpErrorResponse) && this.analytics.trackEvent(
+      'Accept Transaction',
+      `Transaction Id: ${res}`
+    )),
     map((res: any | HttpErrorResponse) => {
       return (!(res instanceof HttpErrorResponse))
         ? new fromActions.CompletePendingsSucc(res)
@@ -60,6 +66,10 @@ export class PendingEffects {
         this.store.dispatch(new fromTransactionActions.FetchTransactions({}))
       } 
     }),
+    tap((res: any | HttpErrorResponse) => !(res instanceof HttpErrorResponse) && this.analytics.trackEvent(
+      'Cancel Transaction',
+      `Transaction Id: ${res}`
+    )),
     map((res: any | HttpErrorResponse) => {
       return (!(res instanceof HttpErrorResponse))
         ? new fromActions.CancelPendingsSucc(res)

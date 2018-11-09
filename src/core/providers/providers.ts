@@ -5,5 +5,6 @@ import { UserProvider } from "./user/user";
 import { OfferProvider } from "./offer-provider/offer-provider";
 import { LoginProvider } from "./login-provider/login-provider";
 import { StompProvider } from "./stomp/stomp-provider";
+import { AnalyticsProvider } from "./analytics/analytics";
 
-export { Api, Rest, Settings, UserProvider, OfferProvider, LoginProvider, StompProvider };
+export { Api, Rest, Settings, UserProvider, OfferProvider, LoginProvider, StompProvider, AnalyticsProvider };

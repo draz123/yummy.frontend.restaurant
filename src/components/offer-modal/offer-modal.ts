@@ -1,4 +1,4 @@
-import { take, map } from "rxjs/operators";
+import { take, map, tap } from "rxjs/operators";
 import { Component, ViewChild, ElementRef } from "@angular/core";
 import * as fromActions from "../../core/actions/offer-form.actions";
 import * as fromModalActions from "../../core/actions/_modal.actions";
@@ -79,11 +79,15 @@ export class OfferModalComponent {
 
         this.form.setValue({
           ...this.form.value,
-          ...rest
+          ...rest,
+          id: id || "",
+          restaurantId: restaurantId || ""
         });
         offer.image && this.setImage(offer.image);
       }
-      this.form$ = this.store.select((state) => state.offerForm.data);
+      this.form$ = this.store.select((state) => state.offerForm.data).pipe(
+        map((data) => data[1])
+      );
     });
   }
 

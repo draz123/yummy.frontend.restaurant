@@ -15,7 +15,7 @@ import {
   ModalController
 } from "ionic-angular";
 
-import { Settings } from "../core/providers/providers";
+import { Settings, AnalyticsProvider } from "../core/providers/providers";
 import { Store } from "@ngrx/store";
 import { AppState } from "../core/app-state";
 import { _Route } from "../core/models/_route";
@@ -57,7 +57,8 @@ export class YummyPlace {
     private toastCtrl: ToastController,
     private loaderCtrl: LoadingController,
     private initializer: Initializer,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private analytics: AnalyticsProvider
   ) {
     this.rootPage = this.initializer.getRootPage();
     this.toast = null;
@@ -76,7 +77,7 @@ export class YummyPlace {
     this.initTranslate();
   }
 
-  initTranslate() {
+  private initTranslate() {
     this.translate.setDefaultLang("pl");
     this.translate.use("pl");
 
@@ -85,7 +86,7 @@ export class YummyPlace {
     });
   }
 
-  subscribeRoute(): void {
+  private subscribeRoute(): void {
     this.store
       .select((state) => state._route.data)
       .pipe(
@@ -101,7 +102,7 @@ export class YummyPlace {
       .subscribe();
   }
 
-  subscribeSwipe(): void {
+  private subscribeSwipe(): void {
     this.isMenuEnabled$ = this.store.select("_route").pipe(
       pluck("data"),
       map(
@@ -110,12 +111,14 @@ export class YummyPlace {
             ? new _Route(this.initializer.getRootPage())
             : routes[routes.length - 1]
       ),
-      tap((e) => console.log("page", e)),
+      tap((route: _Route) => this.analytics.trackPage(
+        route.name
+      )),
       map((route: _Route) => route.name !== "welcome")
     );
   }
 
-  subscribeLoader(): void {
+  private subscribeLoader(): void {
     this.store
       .select((state) => state._loader.data)
       .pipe(
@@ -132,7 +135,7 @@ export class YummyPlace {
       .subscribe();
   }
 
-  subscribeToaster(): void {
+  private subscribeToaster(): void {
     this.store
       .select((state) => state._toast.data)
       .pipe(
@@ -149,7 +152,7 @@ export class YummyPlace {
       .subscribe();
   }
 
-  subscribeModal(): void {
+  private subscribeModal(): void {
     this.store
       .select((state) => state._modal.data)
       .pipe(
@@ -166,7 +169,7 @@ export class YummyPlace {
       .subscribe();
   }
 
-  handleUIDisplay(
+  private handleUIDisplay(
     prevState: _Toast | _Loader | _Modal,
     currState: _Toast | _Loader | _Modal,
     shownFn: Function,
@@ -185,19 +188,19 @@ export class YummyPlace {
     return obs;
   }
 
-  setRoot(route: _Route): Promise<any> {
+  private setRoot(route: _Route): Promise<any> {
     return this.nav.setRoot(route.name, route.params);
   }
 
-  pushPage(route: _Route): Promise<any> {
+  private pushPage(route: _Route): Promise<any> {
     return this.nav.push(route.name, route.params);
   }
 
-  popPage(): Promise<any> {
+  private popPage(): Promise<any> {
     return this.nav.pop();
   }
 
-  showToast(toast: _Toast): Promise<any> {
+  private showToast(toast: _Toast): Promise<any> {
     this.toast = this.toastCtrl.create({
       message: toast.label,
       position: "bottom",
@@ -206,22 +209,22 @@ export class YummyPlace {
     return this.toast.present();
   }
 
-  hideToast(): Promise<any> {
+  private hideToast(): Promise<any> {
     return this.toast.dismiss();
   }
 
-  showLoader(loader: _Loader): Promise<any> {
+  private showLoader(loader: _Loader): Promise<any> {
     this.loader = this.loaderCtrl.create({
       content: loader.label
     });
     return this.loader.present();
   }
 
-  hideLoader(): Promise<any> {
+  private hideLoader(): Promise<any> {
     return this.loader.dismiss();
   }
 
-  selectModalMode(modalMode: _ModalType): any {
+  private selectModalMode(modalMode: _ModalType): any {
     switch (modalMode) {
       case _ModalType.OFFER:
       default:
@@ -233,7 +236,7 @@ export class YummyPlace {
     }
   }
 
-  showModal(modal: _Modal): Promise<any> {
+  private showModal(modal: _Modal): Promise<any> {
     this.modal = this.modalCtrl.create(
       this.selectModalMode(modal.mode),
       modal.meta
@@ -241,7 +244,7 @@ export class YummyPlace {
     return this.modal.present();
   }
 
-  hideModal(): Promise<any> {
+  private hideModal(): Promise<any> {
     return this.modal.dismiss();
   }
 }

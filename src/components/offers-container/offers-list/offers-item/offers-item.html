@@ -3,9 +3,10 @@
   <img [src]="item?.image" />
 </div>
 <div
-  class="item__label bold">
-  {{ item?.description || '-' }}
-  {{ item?.type || '-' }}
+  class="item__label">
+  <span class="bold">{{ item?.name }}</span>
+  <!-- <br>
+  <span class="small">{{ item?.description || '-' }}</span> -->
 </div>
 <div
   class="item__details">

@@ -28,7 +28,8 @@ import {
   Api,
   Rest,
   StompProvider,
-  UserProvider
+  UserProvider,
+  AnalyticsProvider
 } from "../core/providers/providers";
 import { HttpInterceptorProvider } from "../core/providers/http-interceptor/http-interceptor";
 
@@ -127,6 +128,7 @@ export function initializer(initializeProvider: Initializer) {
     PendingProvider,
     TransactionsProvider,
     StompProvider,
+    AnalyticsProvider,
     Initializer,
     Camera,
     SplashScreen,

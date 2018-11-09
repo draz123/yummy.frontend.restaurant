@@ -103,8 +103,14 @@ export class OfferProvider {
   }
 
   public updateOffer(offer: Offer): Observable<any> {
-    return this.rest.putOffer(offer).pipe(
-      map(() => offer),
+    return this.rest.putOffer({
+      id: offer.id,
+      ...this.unparseOffer(offer)
+    }).pipe(
+      map(() => ({
+        id: offer.id,
+        ...this.unparseOffer(offer)
+      })),
       catchError((err: HttpErrorResponse) => observableOf(err))
     );
   }

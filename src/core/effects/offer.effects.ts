@@ -9,7 +9,7 @@ import { Offer } from "../models/offer";
 import { HttpErrorResponse } from "@angular/common/http";
 import { Store } from "@ngrx/store";
 import { AppState } from "../app-state";
-import { StompProvider } from "../providers/providers";
+import { StompProvider, AnalyticsProvider } from "../providers/providers";
 
 @Injectable()
 export class OfferEffects {
@@ -17,7 +17,8 @@ export class OfferEffects {
     private actions$: Actions,
     private store: Store<AppState>,
     private offerProvider: OfferProvider,
-    private stompProvider: StompProvider
+    private stompProvider: StompProvider,
+    private analytics: AnalyticsProvider
   ) {}
 
   @Effect()
@@ -65,6 +66,11 @@ export class OfferEffects {
     ),
     tap(() => this.store.dispatch(new fromLoaderActions.Hide())),
     tap(() => this.store.dispatch(new fromModalActions.Hide())),
+    tap((res: Offer | HttpErrorResponse) => !(res instanceof HttpErrorResponse) && this.analytics.trackEvent(
+      res.id ? 'Update Offer' : 'Add Offer',
+      `Restaurant Id: ${res.restaurantId}`,
+      `Offer: ${JSON.stringify(res)}`
+    )),
     map((res: Offer | HttpErrorResponse) => {
       return !(res instanceof HttpErrorResponse)
         ? new fromActions.UpdateOfferSucc(res)
